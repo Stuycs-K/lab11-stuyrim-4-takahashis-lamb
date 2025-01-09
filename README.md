@@ -18,16 +18,25 @@ Make a clear list of features that work/dont work
 
 ## Adventurer Subclasses
 
+### King
+
+* The king holds a trident, and it's special feature is using harnested energy from the sun. 
+
+* **Attack:** The king stabs the opponent using his sharp trident. This decreases the sun energy by 4, the king's HP by 3, and the opponent by 10 HP.
+* **Special Attack:** The king uses his stored sun energy and converts it into electric energy. He initiates a lightning blast, which decreases the sun energy by 20, the king's HP by 7, and the opponent by 30 HP.
+* **Support:** The king can harnest the sun's energy and heal himself. Increases player's HP by 10, and if used on a king, increases sun energy by 10.
+* **Max HP:** 1000 HP
+
 ### Farmer
 
 * The farmer's special features are their berries.
 
-* Attack: The farmer can use their berries to poison their opponent. This decreases the berries by 2, the farmer's hp by 2, and the opponent by 13.
+* **Attack:** The farmer can use their berries to poison their opponent. This decreases the berries by 2, the farmer's hp by 2, and the opponent by 13.
 
-* Special Attack: The farmer can convert multiple poison berries into a 
+* **Special Attack:** The farmer can convert multiple poison berries into a 
 bomb that could potentially kill players. This decreases the farmer's berries by 7, the farmer's hp by 5, and the opponent by 25.
 
-* Support: The farmer also has berries that can be used to restore health with the seeds growing other berries. This increases the player's hp by 9, and if used on a farmer, increases the berries amount by 6.
+* **Support:** The farmer also has berries that can be used to restore health with the seeds growing other berries. This increases the player's hp by 9, and if used on a farmer, increases the berries amount by 6.
 
 
 
