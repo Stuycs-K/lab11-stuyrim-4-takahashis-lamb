@@ -40,4 +40,17 @@ bomb that could potentially kill players. This decreases the farmer's berries by
 * **Max HP:** 30 HP
 
 
+## Boss Subclass
+
+### 
+
+*
+
+* **Attack:** 
+
+* **Special Attack:** 
+
+* **Support:** 
+* **Max HP:** 100 HP
+
 
