@@ -20,7 +20,7 @@ Make a clear list of features that work/dont work
 
 ### King
 
-* The king holds a trident, and it's special feature is using harnested energy from the sun. 
+* The king holds a trident, and it's special feature is using harnested energy from the sun.
 
 * **Attack:** The king stabs the opponent using his sharp trident. This decreases the sun energy by 4, the king's HP by 1, and the opponent by 7 HP.
 * **Special Attack:** The king uses his stored sun energy and converts it into electric energy. He initiates a lightning blast, which decreases the sun energy by 20, the king's HP by 3, and the opponent by 15 HP.
@@ -33,11 +33,22 @@ Make a clear list of features that work/dont work
 
 * **Attack:** The farmer can use their berries to poison their opponent. This decreases the berries by 2, the farmer's hp by 2, and the opponent by 4.
 
-* **Special Attack:** The farmer can convert multiple poison berries into a 
+* **Special Attack:** The farmer can convert multiple poison berries into a
 bomb that could potentially kill players. This decreases the farmer's berries by 7, the farmer's hp by 5, and the opponent by 10.
 
 * **Support:** The farmer also has berries that can be used to restore health with the seeds growing other berries. This increases the player's hp by 3, and if used on a farmer, increases the berries amount by 6.
 * **Max HP:** 30 HP
 
 
+## Boss Subclass
 
+###
+
+*
+
+* **Attack:**
+
+* **Special Attack:**
+
+* **Support:**
+* **Max HP:** 100 HP
