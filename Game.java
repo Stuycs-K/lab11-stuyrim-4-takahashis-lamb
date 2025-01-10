@@ -83,6 +83,15 @@ public class Game{
 
       /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
       //YOUR CODE HERE
+      for(int i = 0; i < party.size(); i++){
+        int startCol = 2;
+        drawText(startRow, startCol, party.get(i).getName());
+        drawText(startRow + 1, startCol, "HP: " + party.get(i).getHP());
+        drawText(startRow + 2, startCol, party.get(i).getSpecialName + ": " + party.get(i).getSpecial());
+        startCol += 20;
+      }
+
+
       /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
     }
 
