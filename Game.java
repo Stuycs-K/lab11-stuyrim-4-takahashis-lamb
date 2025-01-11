@@ -57,7 +57,33 @@ public class Game{
   public static void TextBox(int row, int col, int width, int height, String text){
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
-
+    int startW = col;
+    int startH = row;
+    if (text.length() <= width){
+      drawText(text, row, col);
+      Text.go(row, col + text.length() - 1);
+      for (int i = row; i > row - height; i--){
+        while (col < col + width){
+          Text.go(row, col);
+          System.out.print(" ");
+          col--;
+        }
+        col = startW;
+      }
+    }else{
+      Text.go(row, col);
+      for (int i = row; i > row - height; i--){
+        for (int l = col; l < col + width; l++){
+          int pos = ((startH - i) * width) + col - startW;
+          if (pos > text.length()){
+            drawText(text.substring(pos, pos + 1), row, col);
+          }else{
+            Text.go(row, col);
+            System.out.print(" ");
+          }
+        }
+      }
+    }
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
   }
 
@@ -151,7 +177,7 @@ public class Game{
     //Make an ArrayList of Adventurers and add 1-3 enemies to it.
     //If only 1 enemy is added it should be the boss class.
     //start with 1 boss and modify the code to allow 2-3 adventurers later.
-    ArrayList<Adventurer>enemies = new ArrayList<Adventurer>();
+    ArrayList<Adventurer> enemies = new ArrayList<Adventurer>();
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
