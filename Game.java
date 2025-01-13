@@ -160,12 +160,17 @@ public class Game{
 
   public static String userInput(Scanner in){
       //Move cursor to prompt location
+      Text.go(10, 1);
 
       //show cursor
+      Text.showCursor();
 
       String input = in.nextLine();
 
       //clear the text that was written
+      for (int i = 1; i <= input.length(); i++){
+        drawText(" ", 10, i);
+      }
 
       return input;
   }
