@@ -2,10 +2,11 @@ public class King extends Adventurer{
     private int sunpower, sunpowerMax;
   
 
-    public King(String name, int sunpower){
+    public King(String name, int hp){
       super(name, 50); 
-      this.sunpower = sunpower;
       sunpowerMax = 70; 
+      this.sunpower = sunpowerMax / 2;
+
     }
   
     public String getSpecialName(){

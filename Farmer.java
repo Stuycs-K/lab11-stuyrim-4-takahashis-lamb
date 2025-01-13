@@ -2,10 +2,10 @@ public class Farmer extends Adventurer{
   private int berries, berriesMax;
   
 
-  public Farmer(String name, int berries){
-    super(name, 30);
-    this.berries = berries;
+  public Farmer(String name, int hp){
+    super(name, hp);
     berriesMax = 64;
+    this.berries = berriesMax / 2;
   }
 
   public String getSpecialName(){
