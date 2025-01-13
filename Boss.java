@@ -25,7 +25,7 @@ public class Boss extends Adventurer{
 
       public String attack(Adventurer other){
         if (getSpecial() >= 10){
-          other.applyDamage(15);
+          other.applyDamage(12);
           applyDamage(3);
           setSpecial(getSpecial() - 10);
           return other.getSpecialName() + " has been punished by God and sucked 15 HP.";
