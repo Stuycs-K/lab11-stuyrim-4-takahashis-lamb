@@ -162,14 +162,18 @@ public class Game{
     drawBackground();
 
     //draw player party
+    drawParty(party, 75);
 
     //draw enemy party
+    drawParty(enemies, 30);
+
+    Text.go(24, 2);
 
   }
 
   public static String userInput(Scanner in){
       //Move cursor to prompt location
-      Text.go(10, 1);
+      Text.go(24, 2);
 
       //show cursor
       Text.showCursor();
@@ -177,9 +181,7 @@ public class Game{
       String input = in.nextLine();
 
       //clear the text that was written
-      for (int i = 1; i <= input.length(); i++){
-        drawText(" ", 10, i);
-      }
+      TextBox(24, 2, 1, 78, " ");
 
       return input;
   }
