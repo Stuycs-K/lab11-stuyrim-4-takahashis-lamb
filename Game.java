@@ -59,7 +59,7 @@ public class Game{
     //YOUR CODE HERE
     int startW = col;
     int startH = row;
-    if (text.length() <= width){
+    if (col + text.length() <= width){
       drawText(text, row, col);
       Text.go(row, col + text.length() - 1);
       for (int i = row; i > row - height; i--){
@@ -93,7 +93,16 @@ public class Game{
     //return a random adventurer (choose between all available subclasses)
     //feel free to overload this method to allow specific names/stats.
     public static Adventurer createRandomAdventurer(){
-      return new CodeWarrior("Bob"+(int)(Math.random()*100));
+      int randomcounter = (int) (Math.random() * 3);
+      if(randomcounter == 0){
+        return new CodeWarrior();
+      }
+      else if(randomcounter == 1){
+        return new Farmer("Mark", (int)(Math.random() * 100));
+      }
+      else{
+        return new King("Bob", (int)(Math.random() * 100));
+      }
     }
 
     /*Display a List of 2-4 adventurers on the rows row through row+3 (4 rows max)
@@ -111,9 +120,9 @@ public class Game{
       //YOUR CODE HERE
       for(int i = 0; i < party.size(); i++){
         int startCol = 2;
-        drawText(startRow, startCol, party.get(i).getName());
-        drawText(startRow + 1, startCol, "HP: " + party.get(i).getHP());
-        drawText(startRow + 2, startCol, party.get(i).getSpecialName + ": " + party.get(i).getSpecial());
+        drawText(party.get(i).getName(), startRow, startCol);
+        drawText("HP: " + party.get(i).getHP(), startRow + 1, startCol);
+        drawText(party.get(i).getSpecialName() + ": " + party.get(i).getSpecial(), startRow + 2, startCol);
         startCol += 20;
       }
 
