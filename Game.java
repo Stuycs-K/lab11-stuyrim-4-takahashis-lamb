@@ -7,6 +7,7 @@ public class Game{
 
   public static void main(String[] args) {
     run();
+    quit();
   }
 
   //Display the borders of your screen that will not change.
@@ -15,20 +16,20 @@ public class Game{
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
     Text.go(1, 1);
-    for(int i = 0; i < 80; i++){
-      System.out.print("-");
+    for(int i = 1; i <= 80; i++){
+      System.out.print("━");
     }
     for(int i = 1; i <= 30; i++){
-      Text.go(1, i);
-      System.out.print("-");
+      Text.go(i, 1);
+      System.out.print("┃");
     }
     for(int i = 1; i <= 30; i++){
-      Text.go(80, i);
-      System.out.print("-");
+      Text.go(i, 80);
+      System.out.print("┃");
     }
     for(int i = 1; i <= 80; i++){
-      Text.go(i, 30);
-      System.out.print("-");
+      Text.go(30, i);
+      System.out.print("━");
     }
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
   }
@@ -122,7 +123,7 @@ public class Game{
         int startCol = 2;
         drawText(party.get(i).getName(), startRow, startCol);
         drawText("HP: " + colorByPercent(party.get(i).getHP(), party.get(i).getmaxHP()), startRow + 1, startCol);
-        drawText(party.get(i).getSpecialName() + ": " + party.get(i).getSpecial(), startRow + 2, startCol);
+        drawText(party.get(i).getSpecialName() + ": " + party.get(i).getSpecial() + "/" + party.get(i).getSpecialMax(), startRow + 2, startCol);
         startCol += 30;
       }
 
@@ -216,6 +217,10 @@ public class Game{
     ArrayList<Adventurer> party = new ArrayList<>();
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
+    //Adventurer p1 = createRandomAdventurer();
+    //Adventurer p2 = createRandomAdventurer();
+    //Adventurer p3 = createRandomAdventurer();
+
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
     boolean partyTurn = true;
@@ -248,6 +253,7 @@ public class Game{
         if(input.equals("attack") || input.equals("a")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
+
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
         else if(input.equals("special") || input.equals("sp")){
