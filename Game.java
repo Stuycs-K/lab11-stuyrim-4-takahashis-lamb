@@ -92,16 +92,16 @@ public class Game{
 
     //return a random adventurer (choose between all available subclasses)
     //feel free to overload this method to allow specific names/stats.
-    public static Adventurer createRandomAdventurer(){
+    public static Adventurer createRandomAdventurer(String name){
       int randomcounter = (int) (Math.random() * 3);
       if(randomcounter == 0){
         return new CodeWarrior();
       }
       else if(randomcounter == 1){
-        return new Farmer("Mark", (int)(Math.random() * 100));
+        return new Farmer(name, (int)(Math.random() * 100));
       }
       else{
-        return new King("Bob", (int)(Math.random() * 100));
+        return new King(name, (int)(Math.random() * 100));
       }
     }
 
@@ -162,10 +162,10 @@ public class Game{
     drawBackground();
 
     //draw player party
-    drawParty(party, 3);
+    drawParty(party, 20);
 
     //draw enemy party
-    drawParty(enemies, 20);
+    drawParty(enemies, 3);
 
     Text.go(24, 2);
 
@@ -205,6 +205,10 @@ public class Game{
     ArrayList<Adventurer> enemies = new ArrayList<Adventurer>();
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
+    Adventurer James = createRandomAdventurer("JAMES");
+    Adventurer Caroline = createRandomAdventurer("CAROLINE");
+    Adventurer Madison = createRandomAdventurer("MADISON");
+
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
     //Adventurers you control:
@@ -223,7 +227,7 @@ public class Game{
     //Draw the window border
 
     //You can add parameters to draw screen!
-    drawScreen();//initial state.
+    drawScreen(party, enemies);//initial state.
 
     //Main loop
 
@@ -309,7 +313,7 @@ public class Game{
       }
 
       //display the updated screen after input has been processed.
-      drawScreen();
+      drawScreen(party, enemies);
 
 
     }//end of main game loop
