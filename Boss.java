@@ -3,7 +3,7 @@ public class Boss extends Adventurer{
 
     public Boss(String name, int hp){
         super(name, hp);
-        godptsMax = 500;
+        godptsMax = 300;
         this.godpts = godptsMax / 2;
       }
 
@@ -41,7 +41,7 @@ public class Boss extends Adventurer{
         return getSpecialName() + " got 10 God points and healed 10 HP.";
       }
 
-/*
+
       public String support(Adventurer other){
         if (getSpecial() >= 5){
             setSpecial(getSpecial() - 4);
@@ -49,19 +49,19 @@ public class Boss extends Adventurer{
             return other.getSpecialName() + " was healed.";
           }
         }else{
-          return "_____________.";
+          return getSpecialName() + " has too little God Points! Are they still a god?";
         }
       }
-*/
+
 
       public String specialAttack(Adventurer other){
-        if (getSpecial() >= 10){
-          other.applyDamage(15);
-          setSpecial(getSpecial() - 10);
-          applyDamage(3);
-          return other.getSpecialName() + " _______________.";
+        if (getSpecial() >= 35){
+          other.applyDamage(25);
+          setSpecial(getSpecial() - 35);
+          applyDamage(10);
+          return other.getSpecialName() + " was smited.";
         }else{
-          return "_______________________________.";
+          return getSpecialName() + "is not powerful enough for this attack.";
         }
       }
 
