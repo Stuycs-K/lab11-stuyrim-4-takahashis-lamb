@@ -121,9 +121,9 @@ public class Game{
       for(int i = 0; i < party.size(); i++){
         int startCol = 2;
         drawText(party.get(i).getName(), startRow, startCol);
-        drawText("HP: " + party.get(i).getHP(), startRow + 1, startCol);
+        drawText("HP: " + colorByPercent(party.get(i).getHP(), party.get(i).getmaxHP()), startRow + 1, startCol);
         drawText(party.get(i).getSpecialName() + ": " + party.get(i).getSpecial(), startRow + 2, startCol);
-        startCol += 20;
+        startCol += 30;
       }
 
 
@@ -157,15 +157,15 @@ public class Game{
   //Display the party and enemies
   //Do not write over the blank areas where text will appear.
   //Place the cursor at the place where the user will by typing their input at the end of this method.
-  public static void drawScreen(){
+  public static void drawScreen(ArrayList<Adventurer> party, ArrayList<Adventurer> enemies){
 
     drawBackground();
 
     //draw player party
-    drawParty(party, 75);
+    drawParty(party, 3);
 
     //draw enemy party
-    drawParty(enemies, 30);
+    drawParty(enemies, 20);
 
     Text.go(24, 2);
 
