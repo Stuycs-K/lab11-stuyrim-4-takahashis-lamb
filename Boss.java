@@ -48,7 +48,7 @@ public class Boss extends Adventurer{
             other.setHP(other.getHP() + 10);
             return other.getSpecialName() + " was healed.";
           }
-        }else{
+          else{
           return getSpecialName() + " has too little God Points! Are they still a god?";
         }
       }
@@ -64,5 +64,4 @@ public class Boss extends Adventurer{
           return getSpecialName() + "is not powerful enough for this attack.";
         }
       }
-
 }
