@@ -206,21 +206,33 @@ public class Game{
     ArrayList<Adventurer> enemies = new ArrayList<Adventurer>();
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
-    //Adventurer James = createRandomAdventurer("JAMES");
-    //Adventurer Caroline = createRandomAdventurer("CAROLINE");
-    //Adventurer Madison = createRandomAdventurer("MADISON");
+    Adventurer James = createRandomAdventurer("JAMES");
+    Adventurer Caroline = createRandomAdventurer("CAROLINE");
+    Adventurer Madison = createRandomAdventurer("MADISON");
+    Adventurer GodBoss = new Boss("MightyGod", 150);
 
+    int rand = (int)(Math.random() * 3) + 1;
+    if(rand == 1){
+      enemies.add(GodBoss);
+    }
+    else if(rand == 2){
+      enemies.add(James); enemies.add(Caroline);
+    }
+    else{
+      enemies.add(James); enemies.add(Caroline); enemies.add(Madison);
+    }
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
     //Adventurers you control:
     //Make an ArrayList of Adventurers and add 2-4 Adventurers to it.
-    ArrayList<Adventurer> party = new ArrayList<>();
+    ArrayList<Adventurer> party = new ArrayList<Adventurer>();
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
-    //Adventurer p1 = createRandomAdventurer();
-    //Adventurer p2 = createRandomAdventurer();
-    //Adventurer p3 = createRandomAdventurer();
+    Adventurer p1 = createRandomAdventurer("Player 1");
+    Adventurer p2 = createRandomAdventurer("Player 2");
+    Adventurer p3 = createRandomAdventurer("Player 3");
 
+    party.add(p1); party.add(p2); party.add(p3); //here for now
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
     boolean partyTurn = true;
@@ -253,7 +265,6 @@ public class Game{
         if(input.equals("attack") || input.equals("a")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
-
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
         else if(input.equals("special") || input.equals("sp")){
@@ -297,6 +308,22 @@ public class Game{
         //Enemy action choices go here!
         /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
         //YOUR CODE HERE
+        int randenemy = (int)(Math.random() * 3);
+        int randmove = (int)(Math.random() * 4);
+        if(randmove == 0){//needs to randomly choose someone from party to attack
+          //implement attack
+        }
+        else if(randmove == 1){
+          //implement special
+        }
+        else if(randmove == 2){
+          //implement support
+        }
+        else{
+          //implement support other
+          //make sure does not run when boss class
+        }
+
         /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
 
