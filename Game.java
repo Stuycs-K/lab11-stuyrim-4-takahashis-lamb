@@ -119,8 +119,8 @@ public class Game{
 
       /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
       //YOUR CODE HERE
+      int startCol = 2;
       for(int i = 0; i < party.size(); i++){
-        int startCol = 2;
         drawText(party.get(i).getName(), startRow, startCol);
         drawText("HP: " + colorByPercent(party.get(i).getHP(), party.get(i).getmaxHP()), startRow + 1, startCol);
         drawText(party.get(i).getSpecialName() + ": " + party.get(i).getSpecial() + "/" + party.get(i).getSpecialMax(), startRow + 2, startCol);
@@ -206,9 +206,9 @@ public class Game{
     ArrayList<Adventurer> enemies = new ArrayList<Adventurer>();
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
-    Adventurer James = createRandomAdventurer("JAMES");
-    Adventurer Caroline = createRandomAdventurer("CAROLINE");
-    Adventurer Madison = createRandomAdventurer("MADISON");
+    //Adventurer James = createRandomAdventurer("JAMES");
+    //Adventurer Caroline = createRandomAdventurer("CAROLINE");
+    //Adventurer Madison = createRandomAdventurer("MADISON");
 
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
