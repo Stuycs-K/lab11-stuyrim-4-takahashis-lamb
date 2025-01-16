@@ -61,14 +61,18 @@ public class Game{
     int startW = col;
     int startH = row;
     if (col + text.length() <= width){
+      Text.hideCursor();
       drawText(text, row, col);
+      /*
       Text.go(row, col + text.length() - 1);
       while (col < col + width){
         Text.go(row, col);
         System.out.print(text.substring(col - startW, col - startW + 1));
         col++;
       }
+      */
     }else{
+      Text.hideCursor();
       Text.go(row, col);
       for (int i = row; i > row - height; i--){
         for (int l = col; l < col + width; l++){
