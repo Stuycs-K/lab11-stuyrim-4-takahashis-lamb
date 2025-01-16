@@ -257,7 +257,7 @@ public class Game{
       input = userInput(in);
       Scanner readinput = new Scanner(input);
       String move = readinput.next();
-      int enemychoice = readinput.nextInt();
+      int personchoice = readinput.nextInt();
 
       //example debug statment
       TextBox(24,2,1,78,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
@@ -268,15 +268,15 @@ public class Game{
         if(move.equals("attack") || move.equals("a")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
-          party.get(whichPlayer).attack(enemies.get(enemychoice));
-          drawmove(" attacked ", party.get(whichPlayer), enemies.get(enemychoice));
+          party.get(whichPlayer).attack(enemies.get(personchoice));
+          drawmove(" attacked ", party.get(whichPlayer), enemies.get(personchoice));
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
         else if(move.equals("special") || move.equals("sp")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
-          party.get(whichPlayer).specialAttack(enemies.get(enemychoice));
-          drawmove(" used special attack on ", party.get(whichPlayer), enemies.get(enemychoice));
+          party.get(whichPlayer).specialAttack(enemies.get(personchoice));
+          drawmove(" used special attack on ", party.get(whichPlayer), enemies.get(personchoice));
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
         else if(move.startsWith("su ") || move.startsWith("support ")){
@@ -284,6 +284,8 @@ public class Game{
           //assume the value that follows su  is an integer.
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
+          party.get(whichPlayer).support(party.get(personchoice));
+          drawmove(" supported ", party.get(whichPlayer), party.get(personchoice));
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
 
@@ -315,10 +317,11 @@ public class Game{
         //Enemy action choices go here!
         /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
         //YOUR CODE HERE
-        int randparty = (int)(Math.random() * 3);
+        int randperson = (int)(Math.random() * party.size());
         int randmove = (int)(Math.random() * 8);
-        if(randmove <= 4){//needs to randomly choose someone from party to attack
+        if(randmove <= 4){ //increases chance of normal attack, not sustainable to have same chance of regular and special attack
           //implement attack
+<<<<<<< HEAD
           //enemies.get(---).attack(party.get(randparty));
         }
         else if(randmove == 5 || randmove == 6){
@@ -327,10 +330,21 @@ public class Game{
         }
         else if(randmove >= 7){
           //implement support
+=======
+          enemies.get(whichOpponent).attack(party.get(randperson));
+          drawmove(" attacked ", enemies.get(whichOpponent), party.get(randperson));
+        }
+        else if(randmove == 5 || randmove == 6){
+          //implement special
+          enemies.get(whichOpponent).specialAttack(party.get(randperson));
+          drawmove(" used their special attack on ", enemies.get(whichOpponent), party.get(randperson));
+>>>>>>> 677bb622e095bd053b244a02ac11257fb4442a9e
         }
         else{
-          //implement support other
-          //make sure does not run when boss class
+          //implement support
+          int randsupport = (int)(Math.random() * enemies.size());
+          enemies.get(whichOpponent).support(enemies.get(randsupport));
+          drawmove(" supported ", enemies.get(whichOpponent), enemies.get(randsupport));
         }
 
         /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
