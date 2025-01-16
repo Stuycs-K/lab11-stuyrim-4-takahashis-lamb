@@ -63,20 +63,17 @@ public class Game{
     if (col + text.length() <= width){
       drawText(text, row, col);
       Text.go(row, col + text.length() - 1);
-      for (int i = row; i > row - height; i--){
-        while (col < col + width){
-          Text.go(row, col);
-          System.out.print(" ");
-          col--;
-        }
-        col = startW;
+      while (col < col + width){
+        Text.go(row, col);
+        System.out.print(text.substring(col - startW, col - startW + 1));
+        col++;
       }
     }else{
       Text.go(row, col);
       for (int i = row; i > row - height; i--){
         for (int l = col; l < col + width; l++){
           int pos = ((startH - i) * width) + col - startW;
-          if (pos > text.length()){
+          if (pos <= text.length()){
             drawText(text.substring(pos, pos + 1), row, col);
           }else{
             Text.go(row, col);
@@ -322,11 +319,11 @@ public class Game{
         int randmove = (int)(Math.random() * 8);
         if(randmove <= 4){//needs to randomly choose someone from party to attack
           //implement attack
-          enemies.get(---).attack(party.get(randparty));
+          //enemies.get(---).attack(party.get(randparty));
         }
         else if(randmove == 5 || randmove == 6){
           //implement special
-          enemies.get(---).specialAttack(party.get(randparty));
+          //enemies.get(---).specialAttack(party.get(randparty));
         }
         else if(randmove >= 7){
           //implement support
