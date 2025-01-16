@@ -321,16 +321,6 @@ public class Game{
         int randmove = (int)(Math.random() * 8);
         if(randmove <= 4){ //increases chance of normal attack, not sustainable to have same chance of regular and special attack
           //implement attack
-<<<<<<< HEAD
-          //enemies.get(---).attack(party.get(randparty));
-        }
-        else if(randmove == 5 || randmove == 6){
-          //implement special
-          //enemies.get(---).specialAttack(party.get(randparty));
-        }
-        else if(randmove >= 7){
-          //implement support
-=======
           enemies.get(whichOpponent).attack(party.get(randperson));
           drawmove(" attacked ", enemies.get(whichOpponent), party.get(randperson));
         }
@@ -338,7 +328,6 @@ public class Game{
           //implement special
           enemies.get(whichOpponent).specialAttack(party.get(randperson));
           drawmove(" used their special attack on ", enemies.get(whichOpponent), party.get(randperson));
->>>>>>> 677bb622e095bd053b244a02ac11257fb4442a9e
         }
         else{
           //implement support
