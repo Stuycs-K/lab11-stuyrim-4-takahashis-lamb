@@ -193,6 +193,10 @@ public class Game{
     Text.go(32,1);
   }
 
+  public static void drawmove(String move, Adventurer action, Adventurer recipient){
+    TextBox(8, 3, 76, 10, action.getName() + move + recipient.getName());
+  }
+
   public static void run(){
     //Clear and initialize
     Text.hideCursor();
@@ -249,30 +253,36 @@ public class Game{
     //Main loop
 
     //display this prompt at the start of the game.
-    String preprompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
+    String preprompt = "Enter command for "+party.get(whichPlayer)+": attack/special/support/quit + desired enemy number";
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
       //Read user input
       input = userInput(in);
+      Scanner readinput = new Scanner(input);
+      String move = readinput.next();
+      int enemychoice = readinput.nextInt();
 
       //example debug statment
       TextBox(24,2,1,78,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
 
       //display event based on last turn's input
       if(partyTurn){
-
         //Process user input for the last Adventurer:
-        if(input.equals("attack") || input.equals("a")){
+        if(move.equals("attack") || move.equals("a")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
+          party.get(whichPlayer).attack(enemies.get(enemychoice));
+          drawmove(" attacked ", party.get(whichPlayer), enemies.get(enemychoice));
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
-        else if(input.equals("special") || input.equals("sp")){
+        else if(move.equals("special") || move.equals("sp")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
+          party.get(whichPlayer).specialAttack(enemies.get(enemychoice));
+          drawmove(" used special attack on ", party.get(whichPlayer), enemies.get(enemychoice));
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
-        else if(input.startsWith("su ") || input.startsWith("support ")){
+        else if(move.startsWith("su ") || move.startsWith("support ")){
           //"support 0" or "su 0" or "su 2" etc.
           //assume the value that follows su  is an integer.
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
@@ -308,15 +318,17 @@ public class Game{
         //Enemy action choices go here!
         /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
         //YOUR CODE HERE
-        int randenemy = (int)(Math.random() * 3);
-        int randmove = (int)(Math.random() * 4);
-        if(randmove == 0){//needs to randomly choose someone from party to attack
+        int randparty = (int)(Math.random() * 3);
+        int randmove = (int)(Math.random() * 8);
+        if(randmove <= 4){//needs to randomly choose someone from party to attack
           //implement attack
+          enemies.get(---).attack(party.get(randparty));
         }
-        else if(randmove == 1){
+        else if(randmove == 5 || randmove == 6){
           //implement special
+          enemies.get(---).specialAttack(party.get(randparty));
         }
-        else if(randmove == 2){
+        else if(randmove >= 7){
           //implement support
         }
         else{
