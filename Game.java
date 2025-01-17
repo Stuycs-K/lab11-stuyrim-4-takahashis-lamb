@@ -100,10 +100,10 @@ public class Game{
         return new CodeWarrior();
       }
       else if(randomcounter == 1){
-        return new Farmer(name, (int)(Math.random() * 100));
+        return new Farmer(name);
       }
       else{
-        return new King(name, (int)(Math.random() * 100));
+        return new King(name);
       }
     }
 
@@ -228,16 +228,31 @@ public class Game{
     }
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
-    //Adventurers you control:
+    //Adventurers you control:0
     //Make an ArrayList of Adventurers and add 2-4 Adventurers to it.
     ArrayList<Adventurer> party = new ArrayList<Adventurer>();
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
-    Adventurer p1 = createRandomAdventurer("Player 1");
-    Adventurer p2 = createRandomAdventurer("Player 2");
-    Adventurer p3 = createRandomAdventurer("Player 3");
+    Scanner amount = new Scanner(System.in);
+    int amountparty = amount.nextInt();
+    //change player names, change from createRandom to specific types based on input
+    if(amountparty == 1){
+      Adventurer p1 = new King("Player 1");
+      party.add(p1);
+    }
+    else if(amountparty == 2){
+      Adventurer p1 = createRandomAdventurer("Player 1");
+      Adventurer p2 = createRandomAdventurer("Player 2");
+      party.add(p1); party.add(p2);
+    }
+    else{
+      Adventurer p1 = createRandomAdventurer("Player 1");
+      Adventurer p2 = createRandomAdventurer("Player 2");
+      Adventurer p3 = createRandomAdventurer("Player 3");
+      party.add(p1); party.add(p2); party.add(p3);
+    }
 
-    party.add(p1); party.add(p2); party.add(p3); //here for now
+
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
     boolean partyTurn = true;
@@ -370,5 +385,7 @@ public class Game{
 
     //After quit reset things:
     quit();
+    Text.clear();
+    Text.go(1, 1);
   }
 }
