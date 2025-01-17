@@ -60,7 +60,7 @@ public class Game{
     //YOUR CODE HERE
     int startW = col;
     int startH = row;
-    if (col + text.length() <= width){
+    if (text.length() <= width){
       Text.hideCursor();
       drawText(text, row, col);
       /*
