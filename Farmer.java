@@ -2,8 +2,8 @@ public class Farmer extends Adventurer{
   private int berries, berriesMax;
   
 
-  public Farmer(String name, int hp){
-    super(name, hp);
+  public Farmer(String name){
+    super(name, 30);
     berriesMax = 64;
     this.berries = berriesMax / 2;
   }
