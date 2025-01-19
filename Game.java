@@ -62,14 +62,25 @@ public class Game{
     int startH = row;
     int totalChar = width * height;
     Text.go(row, col);
-    if (text.length() >= totalChar){
-      for (int i = 0; i < totalChar; i++){
+    for (int i = 0; i < totalChar; i++){
+      if (i < text.length()){
         System.out.println(text.substring(i, i + 1));
         if (col < col + width){
           col++;
           Text.go(row, col);
         }else{
-          col = row;
+          col = startW;
+          row++;
+          Text.go(row, col);
+        }
+      }
+      if (i >= text.length()){
+        System.out.println(" ");
+        if (col < col + width){
+          col++;
+          Text.go(row, col);
+        }else{
+          col = startW;
           row++;
           Text.go(row, col);
         }
