@@ -60,17 +60,25 @@ public class Game{
     //YOUR CODE HERE
     int startW = col;
     int startH = row;
+    int totalChar = width * height;
+    Text.go(row, col);
+    if (text.length() >= totalChar){
+      for (int i = 0; i < totalChar; i++){
+        System.out.println(text.substring(i, i + 1));
+        if (col < col + width){
+          col++;
+          Text.go(row, col);
+        }else{
+          col = row;
+          row++;
+          Text.go(row, col);
+        }
+      }
+    }
+    /*
     if (text.length() <= width){
       Text.hideCursor();
       drawText(text, row, col);
-      /*
-      Text.go(row, col + text.length() - 1);
-      while (col < col + width){
-        Text.go(row, col);
-        System.out.print(text.substring(col - startW, col - startW + 1));
-        col++;
-      }
-      */
     }else{
       Text.hideCursor();
       Text.go(row, col);
@@ -85,6 +93,7 @@ public class Game{
           }
         }
       }
+      
     }
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
   }
