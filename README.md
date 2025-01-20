@@ -15,8 +15,8 @@ Make a clear list of features that work/dont work
 
 :beetle: This is a bug that affects the game.
 
-* Can play with a group of 3 different types of adventurers :question:
-* Can play against 1-3 randomly chosen adventurer opponents :question:
+* Can play with a group of 3 different types of adventurers :white_check_mark:
+* Can play against 1-3 randomly chosen adventurer opponents :white_check_mark:
 * Can use attack/special operations on your opponents :question:
 * Can use support operations on your team :question:
 * The program ends when the user chose to quit, or all enemies is defeated, or the entire party is defeated :x:
