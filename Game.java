@@ -58,29 +58,25 @@ public class Game{
   public static void TextBox(int row, int col, int width, int height, String text){
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
-    int startW = col;
-    int startH = row;
     int totalChar = width * height;
     Text.go(row, col);
     for (int i = 0; i < totalChar; i++){
       if (i < text.length()){
-        System.out.println(text.substring(i, i + 1));
+        System.out.print(text.substring(i, i + 1));
         if (col < col + width){
           col++;
           Text.go(row, col);
         }else{
-          col = startW;
           row++;
           Text.go(row, col);
         }
       }
-      if (i >= text.length()){
-        System.out.println(" ");
+      else{
+        System.out.print(" ");
         if (col < col + width){
           col++;
           Text.go(row, col);
         }else{
-          col = startW;
           row++;
           Text.go(row, col);
         }
@@ -222,7 +218,12 @@ public class Game{
     //Clear and initialize
     Text.hideCursor();
     Text.clear();
+    drawBackground();
 
+    TextBox(24, 2, 78, 1, "How many opponents would you like to play against?(1-3)");
+    Text.go(24, 58);
+    Scanner amount = new Scanner(System.in);
+    int amountenemy = amount.nextInt();
 
     //Things to attack:
     //Make an ArrayList of Adventurers and add 1-3 enemies to it.
@@ -236,11 +237,10 @@ public class Game{
     Adventurer Madison = createRandomAdventurer("MADISON");
     Adventurer GodBoss = new Boss("MightyGod", 150);
 
-    int rand = (int)(Math.random() * 3) + 1;
-    if(rand == 1){
+    if(amountenemy == 1){
       enemies.add(GodBoss);
     }
-    else if(rand == 2){
+    else if(amountenemy == 2){
       enemies.add(James); enemies.add(Caroline);
     }
     else{
@@ -253,22 +253,32 @@ public class Game{
     ArrayList<Adventurer> party = new ArrayList<Adventurer>();
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
-    Scanner amount = new Scanner(System.in);
+
+    TextBox(24, 2, 78, 1, "How many allies would you like to play with?(1-3)");
+    Text.go(24, 52);
     int amountparty = amount.nextInt();
+
+    TextBox(24, 2, 78, 1, "What do you want their names to be?(in name, name2 format)");
+    Text.go(24, 61);
+    String partynames = amount.next();
+    amount.close();
+
+    String[] partyname = partynames.split(", ");
+    
     //change player names, change from createRandom to specific types based on input
     if(amountparty == 1){
-      Adventurer p1 = new King("Player 1");
+      Adventurer p1 = new King(partyname[0]);
       party.add(p1);
     }
     else if(amountparty == 2){
-      Adventurer p1 = createRandomAdventurer("Player 1");
-      Adventurer p2 = createRandomAdventurer("Player 2");
+      Adventurer p1 = createRandomAdventurer(partyname[0]);
+      Adventurer p2 = createRandomAdventurer(partyname[1]);
       party.add(p1); party.add(p2);
     }
     else{
-      Adventurer p1 = createRandomAdventurer("Player 1");
-      Adventurer p2 = createRandomAdventurer("Player 2");
-      Adventurer p3 = createRandomAdventurer("Player 3");
+      Adventurer p1 = createRandomAdventurer(partyname[0]);
+      Adventurer p2 = createRandomAdventurer(partyname[1]);
+      Adventurer p3 = createRandomAdventurer(partyname[2]);
       party.add(p1); party.add(p2); party.add(p3);
     }
 
@@ -290,6 +300,7 @@ public class Game{
 
     //display this prompt at the start of the game.
     String preprompt = "Enter command for "+party.get(whichPlayer)+": attack/special/support/quit + desired enemy number";
+    
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
       //Read user input
@@ -299,7 +310,8 @@ public class Game{
       int personchoice = readinput.nextInt();
 
       //example debug statment
-      TextBox(24,2,1,78,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
+      //TextBox(24,2,1,78,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
+      TextBox(24, 2, 1, 78, preprompt);
 
       //display event based on last turn's input
       if(partyTurn){
