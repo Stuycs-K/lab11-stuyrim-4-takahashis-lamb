@@ -10,7 +10,7 @@ public class King extends Adventurer{
     }
   
     public String getSpecialName(){
-      return "King " + getName().substring(0, 2);
+      return "sunpower";
     }
   
     public int getSpecial(){

@@ -9,7 +9,7 @@ public class Farmer extends Adventurer{
   }
 
   public String getSpecialName(){
-    return "Farmer " + getName().substring(0, 2);
+    return "berries"; 
   }
 
   public int getSpecial(){
