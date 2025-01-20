@@ -257,10 +257,11 @@ public class Game{
     TextBox(24, 2, 78, 1, "How many allies would you like to play with?(1-3)");
     Text.go(24, 52);
     int amountparty = amount.nextInt();
+    amount.nextLine();
 
     TextBox(24, 2, 78, 1, "What do you want their names to be?(in name, name2 format)");
     Text.go(24, 61);
-    String partynames = amount.next();
+    String partynames = amount.nextLine();
     amount.close();
 
     String[] partyname = partynames.split(", ");
@@ -271,14 +272,14 @@ public class Game{
       party.add(p1);
     }
     else if(amountparty == 2){
-      Adventurer p1 = createRandomAdventurer(partyname[0]);
-      Adventurer p2 = createRandomAdventurer(partyname[1]);
+      Adventurer p1 = new King(partyname[0]);
+      Adventurer p2 = new Farmer(partyname[1]);
       party.add(p1); party.add(p2);
     }
     else{
-      Adventurer p1 = createRandomAdventurer(partyname[0]);
-      Adventurer p2 = createRandomAdventurer(partyname[1]);
-      Adventurer p3 = createRandomAdventurer(partyname[2]);
+      Adventurer p1 = new King(partyname[0]);
+      Adventurer p2 = new Farmer(partyname[1]);
+      Adventurer p3 = new CodeWarrior(partyname[2]);
       party.add(p1); party.add(p2); party.add(p3);
     }
 
@@ -311,10 +312,11 @@ public class Game{
 
       //example debug statment
       //TextBox(24,2,1,78,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
-      TextBox(24, 2, 1, 78, preprompt);
+
 
       //display event based on last turn's input
       if(partyTurn){
+        TextBox(24, 2, 1, 78, preprompt);
         //Process user input for the last Adventurer:
         if(move.equals("attack") || move.equals("a")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
