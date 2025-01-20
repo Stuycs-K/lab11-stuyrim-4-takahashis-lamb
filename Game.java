@@ -339,7 +339,10 @@ public class Game{
           drawmove(" supported ", party.get(whichPlayer), party.get(personchoice));
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
-
+        String resultAlly = party.get(whichPlayer).getSpecialName() + " has " + party.get(whichPlayer).getHP() + " HP and " + party.get(whichPlayer).getSpecial() +  " " + party.get(whichPlayer).getSpecialName();
+        String resultEnemy = enemies.get(personchoice).getSpecialName() + " has " + enemies.get(personchoice).getHP() + " HP and " + enemies.get(personchoice).getSpecial() + " " + enemies.get(personchoice).SpecialName();
+        String resultOther = party.get(personchoice).getSpecialName() + " has " + party.get(personchoice).getHP() + " HP and " + party.get(personchoice).getSpecial() + " " + party.get(personchoice).getSpecialName();
+        TextBox(24, 2, 1, 78, resultAlly + " " + resultEnemy + " " + resultOther);
         //You should decide when you want to re-ask for user input
         //If no errors:
         whichPlayer++;
@@ -407,7 +410,10 @@ public class Game{
         //display this prompt before player's turn
         String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
       }
-
+      String resultAlly = party.get(randperson).getSpecialName() + " has " + party.get(randperson).getHP() + " HP and " + player.get(randperson).getSpecial() +  " " + player.get(randperson).getSpecialName();
+      String resultEnemy = enemies.get(whichOpponent).getSpecialName() + " has " + enemies.get(whichOpponent).getHP() + " HP and " + enemies.get(whichOpponent).getSpecial() + " " + enemies.get(whichOpponent).getSpecialName();
+      String resultOther = enemies.get(randsupport).getSpecialName() + " has " + enemies.get(randsupport).getHP() + " HP and " + enemies.get(randsupport).getSpecial() + " " + enemies.get(randsupport).getSpecialName();
+      TextBox(24, 2, 1, 78, resultAlly + " " + resultEnemy + " " + resultOther);
       //display the updated screen after input has been processed.
       drawScreen(party, enemies);
 
