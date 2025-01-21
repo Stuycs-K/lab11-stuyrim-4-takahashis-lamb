@@ -58,10 +58,10 @@ public class Game{
     drawText(Text.colorize("┛", Text.BOLD), 16, WIDTH - 1);
     drawText(Text.colorize("┓", Text.BOLD), 17, WIDTH - 1);
 
-    drawText(Text.colorize("┗", Text.BOLD), 19, 2);
-    drawText(Text.colorize("┏", Text.BOLD), 20, 2);
-    drawText(Text.colorize("┛", Text.BOLD), 19, WIDTH - 1);
-    drawText(Text.colorize("┓", Text.BOLD), 20, WIDTH - 1);
+    drawText(Text.colorize("┗", Text.BOLD), 22, 2);
+    drawText(Text.colorize("┏", Text.BOLD), 23, 2);
+    drawText(Text.colorize("┛", Text.BOLD), 22, WIDTH - 1);
+    drawText(Text.colorize("┓", Text.BOLD), 23, WIDTH - 1);
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
   }
 
@@ -165,18 +165,17 @@ public class Game{
     String output = String.format("%2s", hp+"")+"/"+String.format("%2s", maxHP+"");
     double percent = (double)(hp / maxHP) * 100;
     if (percent < 25.0){
-      Text.colorize(output, 31);
+      return Text.colorize(output, Text.RED);
     }
     else if (percent >= 75.0){
-      Text.colorize(output, 37);
+      return Text.colorize(output, Text.WHITE);
     }else{
-      Text.colorize(output, 33);
+      return Text.colorize(output, Text.YELLOW);
     }
     //COLORIZE THE OUTPUT IF HIGH/LOW:
     // under 25% : red
     // under 75% : yellow
     // otherwise : white
-    return output;
   }
 
 
