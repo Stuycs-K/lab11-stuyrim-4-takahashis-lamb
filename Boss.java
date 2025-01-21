@@ -27,10 +27,10 @@ public class Boss extends Adventurer{
         if (getSpecial() >= 10){
           other.applyDamage(12);
           setSpecial(getSpecial() - 10);
-          return other.getSpecialName() + " has been punished by God and sucked 15 HP.";
+          return other.getName() + " has been punished by God and sucked 15 HP.";
         }else{
           applyDamage(8);
-          return getSpecialName() + " was out of God points and he crashed out! He endured 8 HP of damage.";
+          return getName() + " was out of God points and he crashed out! He endured 8 HP of damage.";
         }
       }
 
@@ -41,7 +41,7 @@ public class Boss extends Adventurer{
         }else{
           setHP(getHP() + 10);
         }
-        return getSpecialName() + " got 10 God points and healed 10 HP.";
+        return getName() + " got 10 God points and healed 10 HP.";
       }
 
 
@@ -53,10 +53,10 @@ public class Boss extends Adventurer{
             }else{
               other.setHP(other.getHP() + 10);
             }
-            return other.getSpecialName() + " was healed.";
+            return other.getName() + " was healed.";
           }
           else{
-          return getSpecialName() + " has too little God Points! Are they still a god?";
+          return getName() + " has too little God Points! Are they still a god?";
         }
       }
 
@@ -65,9 +65,9 @@ public class Boss extends Adventurer{
         if (getSpecial() >= 35){
           other.applyDamage(25);
           setSpecial(getSpecial() - 35);
-          return other.getSpecialName() + " was smited.";
+          return other.getName() + " was smited.";
         }else{
-          return getSpecialName() + "is not powerful enough for this attack.";
+          return getName() + "is not powerful enough for this attack.";
         }
       }
 }

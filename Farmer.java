@@ -28,10 +28,10 @@ public class Farmer extends Adventurer{
     if (getSpecial() >= 2){
       other.applyDamage(4);
       setSpecial(getSpecial() - 2);
-      return other.getSpecialName() + " has been poisioned.";
+      return other.getName() + " has been poisioned.";
     }else{
       applyDamage(6);
-      return getSpecialName() + " is starving.";
+      return getName() + " is starving.";
     }
   }
 
@@ -42,12 +42,12 @@ public class Farmer extends Adventurer{
     }else{
       setHP(getHP() + 3);
     }
-    return getSpecialName() + " has grown more berries.";
+    return getName() + " has grown more berries.";
   }
 
   public String support(Adventurer other){
     if (getSpecial() >= 6){
-      if (other.getSpecialName().substring(0, 6).equals("Farmer")){
+      if (other.getSpecialName().equals("berries")){
         other.setSpecial(other.getSpecial() + 6);
         setSpecial(getSpecial() - 6);
         return "Berries have been traded.";
@@ -58,7 +58,7 @@ public class Farmer extends Adventurer{
         }else{
           other.setHP(getHP() + 18);
         }
-        return other.getSpecialName() + " was fed and healed.";
+        return other.getName() + " was fed and healed.";
       }
     }else{
       return "Not enough berries.";
@@ -69,7 +69,7 @@ public class Farmer extends Adventurer{
     if (getSpecial() >= 7){
       other.applyDamage(10);
       setSpecial(getSpecial() - 7);
-      return other.getSpecialName() + " is covered in poison.";
+      return other.getName() + " is covered in poison.";
     }else{
       return "More berries are needed for a bomb.";
     }

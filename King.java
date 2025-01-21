@@ -28,10 +28,10 @@ public class King extends Adventurer{
       if (getSpecial() >= 4){ 
         other.applyDamage(7); 
         setSpecial(getSpecial() - 4); 
-        return other.getSpecialName() + " has been stabbed.";
+        return other.getName() + " has been stabbed.";
       }else{
         applyDamage(8); 
-        return getSpecialName() + " is not getting enough Vitamin D and instead attacked themself!";
+        return getName() + " is not getting enough Vitamin D and instead attacked themself!";
       }
     }
   
@@ -42,12 +42,12 @@ public class King extends Adventurer{
       }else{
         setHP(getHP() + 10);
       }
-      return getSpecialName() + " has harvested more energy from the sun.";
+      return getName() + " has harvested more energy from the sun.";
     }
   
     public String support(Adventurer other){
       if (getSpecial() >= 5){ 
-        if (other.getSpecialName().substring(0, 4).equals("King")){
+        if (other.getSpecialName().equals("sunpower")){
           other.setSpecial(other.getSpecial() + 5); 
           setSpecial(getSpecial() - 5); 
           return "Sun energy have been traded.";
@@ -58,7 +58,7 @@ public class King extends Adventurer{
           }else{
             other.setHP(other.getHP() + 10); 
           }
-          return other.getSpecialName() + " was healed.";
+          return other.getName() + " was healed.";
         }
       }else{
         return "Not enough energy from the sun.";
@@ -69,7 +69,7 @@ public class King extends Adventurer{
       if (getSpecial() >= 10){ 
         other.applyDamage(15); 
         setSpecial(getSpecial() - 10);
-        return other.getSpecialName() + " is shot down by lightning.";
+        return other.getName() + " is shot down by lightning.";
       }else{
         return "More energy from the sun is needed to convert to create a lightning strike.";
       }
