@@ -366,12 +366,25 @@ public class Game{
     
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
+
+      if(!partyTurn && whichOpponent >= enemies.size()){
+        whichPlayer = 0;
+        whichOpponent = 0;
+        turn++;
+        partyTurn=true;
+      }
+      
       //Read user input
       TextBox(24, 3, 76, 1, preprompt);
       Text.go(24, 3 + preprompt.length());
       int personchoice = 0;
+      input = in.nextLine();
+      if(input.equals("q") || input.equals("quit")){
+        TextBox(9, 3, 76, 1, "Game aborted.");
+        quit();
+        return;
+      }
       try{
-        input = in.nextLine();
         personchoice = Integer.parseInt(input.substring(input.length() - 1, input.length())) - 1;  
       } catch(NumberFormatException e){
         TextBox(9, 3, 76, 1, "Invalid input.");
@@ -410,9 +423,6 @@ public class Game{
           party.get(whichPlayer).support(party.get(personchoice));
           drawmove(" supported ", party.get(whichPlayer), party.get(personchoice));
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-        }
-        else if(input.equals("q") || input.equals("quit")){
-          quit();
         }
 
         checkdeadparty(party);
@@ -469,15 +479,6 @@ public class Game{
         drawScreen(party, enemies);
       }//end of one enemy.
 
-      //modify this if statement.
-      if(!partyTurn && whichOpponent >= enemies.size()){
-        //THIS BLOCK IS TO END THE ENEMY TURN
-        //It only triggers after the last enemy goes.
-        whichPlayer = 0;
-        turn++;
-        partyTurn=true;
-        //display this prompt before player's turn
-      }
       //display the updated screen after input has been processed.
       drawScreen(party, enemies);
 
