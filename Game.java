@@ -48,15 +48,10 @@ public class Game{
     drawText(Text.colorize("┗", Text.BOLD), HEIGHT - 1, 2);
     drawText(Text.colorize("┛", Text.BOLD), HEIGHT - 1, WIDTH - 1);
 
-    drawText(Text.colorize("┗", Text.BOLD), 4, 2);
-    drawText(Text.colorize("┏", Text.BOLD), 5, 2);
-    drawText(Text.colorize("┛", Text.BOLD), 4, WIDTH - 1);
-    drawText(Text.colorize("┓", Text.BOLD), 5, WIDTH - 1);
-
-    drawText(Text.colorize("┗", Text.BOLD), 10, 2);
-    drawText(Text.colorize("┏", Text.BOLD), 11, 2);
-    drawText(Text.colorize("┛", Text.BOLD), 10, WIDTH - 1);
-    drawText(Text.colorize("┓", Text.BOLD), 11, WIDTH - 1);
+    drawText(Text.colorize("┗", Text.BOLD), 7, 2);
+    drawText(Text.colorize("┏", Text.BOLD), 8, 2);
+    drawText(Text.colorize("┛", Text.BOLD), 7, WIDTH - 1);
+    drawText(Text.colorize("┓", Text.BOLD), 8, WIDTH - 1);
 
     drawText(Text.colorize("┗", Text.BOLD), 16, 2);
     drawText(Text.colorize("┏", Text.BOLD), 17, 2);
@@ -67,11 +62,6 @@ public class Game{
     drawText(Text.colorize("┏", Text.BOLD), 20, 2);
     drawText(Text.colorize("┛", Text.BOLD), 19, WIDTH - 1);
     drawText(Text.colorize("┓", Text.BOLD), 20, WIDTH - 1);
-
-    drawText(Text.colorize("┗", Text.BOLD), 22, 2);
-    drawText(Text.colorize("┏", Text.BOLD), 23, 2);
-    drawText(Text.colorize("┛", Text.BOLD), 22, WIDTH - 1);
-    drawText(Text.colorize("┓", Text.BOLD), 23, WIDTH - 1);
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
   }
 
