@@ -367,30 +367,12 @@ public class Game{
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
 
-      if(!partyTurn && whichOpponent >= enemies.size()){
-        whichPlayer = 0;
+      if (!partyTurn && whichOpponent >= enemies.size()) {
         whichOpponent = 0;
         turn++;
-        partyTurn=true;
+        partyTurn = true;
       }
       
-      //Read user input
-      TextBox(24, 3, 76, 1, preprompt);
-      Text.go(24, 3 + preprompt.length());
-      int personchoice = 0;
-      input = in.nextLine();
-      if(input.equals("q") || input.equals("quit")){
-        TextBox(9, 3, 76, 1, "Game aborted.");
-        quit();
-        return;
-      }
-      try{
-        personchoice = Integer.parseInt(input.substring(input.length() - 1, input.length())) - 1;  
-      } catch(NumberFormatException e){
-        TextBox(9, 3, 76, 1, "Invalid input.");
-        Text.showCursor();
-        Text.go(1, 1);
-      }
 
 
       //example debug statment
@@ -399,7 +381,23 @@ public class Game{
 
       //display event based on last turn's input
       if(partyTurn && whichPlayer < party.size()){
+        //Read user input
         TextBox(24, 3, 76, 1, preprompt);
+        Text.go(24, 3 + preprompt.length());
+        int personchoice = 0;
+        input = in.nextLine();
+        if(input.equals("q") || input.equals("quit")){
+          TextBox(9, 3, 76, 1, "Game aborted.");
+          quit();
+          return;
+        }
+        try{
+          personchoice = Integer.parseInt(input.substring(input.length() - 1, input.length())) - 1;  
+        } catch(NumberFormatException e){
+          TextBox(9, 3, 76, 1, "Invalid input.");
+          Text.showCursor();
+          Text.go(1, 1);
+        }
         //Process user input for the last Adventurer:
         if(input.startsWith("attack") || input.startsWith("a")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
@@ -431,7 +429,14 @@ public class Game{
         //You should decide when you want to re-ask for user input
         //If no errors:
         whichPlayer++;
+
+        if(whichPlayer >= party.size()){
+          whichPlayer = 0;
+          partyTurn = false;
+        }
+
         drawScreen(party, enemies);
+
 
         //This is after the player's turn, and allows the user to see the enemy turn
         //done with one party member
@@ -439,7 +444,7 @@ public class Game{
         
       else{
         //not the party turn!
-
+        partyTurn = false;
         //enemy attacks a randomly chosen person with a randomly chosen attack.z`
         //Enemy action choices go here!
         /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
@@ -476,6 +481,13 @@ public class Game{
         input = userInput(in);
 
         whichOpponent++;
+
+        if(whichOpponent >= enemies.size()){
+          whichOpponent = 0;
+          partyTurn = true;
+          turn++;
+        }
+
         drawScreen(party, enemies);
       }//end of one enemy.
 
