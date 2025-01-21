@@ -430,7 +430,12 @@ public class Game{
           //assume the value that follows su  is an integer.
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
-          move = party.get(whichPlayer).support(party.get(personchoice));
+          if(whichPlayer == personchoice){
+            move = enemies.get(whichPlayer).support();
+          }
+          else{
+            move = party.get(whichPlayer).support(party.get(personchoice));
+          }
           drawmove(move);
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
@@ -453,8 +458,13 @@ public class Game{
         if(whichPlayer >= party.size()){
           whichPlayer = 0;
           partyTurn = false;
+          String prompt = "press enter to see enemy turn";
+          TextBox(24, 3, 75, 1, prompt);
+          Text.go(24, 4 + prompt.length());
+          input = userInput(in);
         }
 
+      
         drawScreen(party, enemies);
 
 
@@ -485,7 +495,12 @@ public class Game{
         else{
           //implement support
           int randsupport = (int)(Math.random() * enemies.size());
-          move = enemies.get(whichOpponent).support(enemies.get(randsupport));
+          if(randsupport == whichOpponent){
+            move = enemies.get(whichOpponent).support();
+          }
+          else{
+            move = enemies.get(whichOpponent).support(enemies.get(randsupport));
+          }
           drawmove(move);
         }
 
