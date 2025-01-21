@@ -37,8 +37,8 @@ public class King extends Adventurer{
   
     public String support(){
       setSpecial(getSpecial() + 10); 
-      if (getHP() + 10 > getmaxHPmaxHP()){
-        setHP(maxHP);
+      if (getHP() + 10 > getmaxHP()){
+        setHP(getmaxHP());
       }else{
         setHP(getHP() + 10);
       }
