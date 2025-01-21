@@ -6,7 +6,6 @@ public class King extends Adventurer{
       super(name, 50); 
       sunpowerMax = 70; 
       this.sunpower = sunpowerMax / 2;
-
     }
   
     public String getSpecialName(){
@@ -38,7 +37,11 @@ public class King extends Adventurer{
   
     public String support(){
       setSpecial(getSpecial() + 10); 
-      setHP(getHP() + 5); 
+      if (getHP() + 10 > getmaxHPmaxHP()){
+        setHP(maxHP);
+      }else{
+        setHP(getHP() + 10);
+      }
       return getSpecialName() + " has harvested more energy from the sun.";
     }
   
@@ -50,7 +53,11 @@ public class King extends Adventurer{
           return "Sun energy have been traded.";
         }else{
           setSpecial(getSpecial() - 4); 
-          other.setHP(other.getHP() + 10); 
+          if (other.getHP() + 10 > other.getmaxHP()){
+            other.setHP(other.getmaxHP());
+          }else{
+            other.setHP(other.getHP() + 10); 
+          }
           return other.getSpecialName() + " was healed.";
         }
       }else{

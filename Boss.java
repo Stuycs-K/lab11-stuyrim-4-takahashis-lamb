@@ -36,7 +36,11 @@ public class Boss extends Adventurer{
 
       public String support(){
         setSpecial(getSpecial() + 10);
-        setHP(getHP() + 10);
+        if (getHP() + 10 > getmaxHP()){
+          setHP(getmaxHP());
+        }else{
+          setHP(getHP() + 10);
+        }
         return getSpecialName() + " got 10 God points and healed 10 HP.";
       }
 
@@ -44,7 +48,11 @@ public class Boss extends Adventurer{
       public String support(Adventurer other){
         if (getSpecial() >= 5){
             setSpecial(getSpecial() - 4);
-            other.setHP(other.getHP() + 10);
+            if (other.getHP() + 10 > other.getmaxHP()){
+              other.setHP(other.getmaxHP());
+            }else{
+              other.setHP(other.getHP() + 10);
+            }
             return other.getSpecialName() + " was healed.";
           }
           else{

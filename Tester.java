@@ -11,8 +11,7 @@ public class Tester{
 
     party.add(a1); party.add(a2); party.add(a3);
 
-    Game.drawBackground();
-    Game.TextBox(40, 12, 5, 1, "Hello");
+    Game.run();
 
 
 /* METHODS THAT NEED DEBUGGING

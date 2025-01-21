@@ -353,7 +353,7 @@ public class Game{
           quit();
         }else{
           for (int i = 0; i < party.size(); i++){
-            if (party.get(i).getHP() == 0){
+            if (party.get(i).getHP() <= 0){
               party.remove(i);  // Removes dead players, so they can't be used.
             }
           }
@@ -365,7 +365,7 @@ public class Game{
           quit();
         }else{
           for (int i = 0; i < enemies.size(); i++){
-            if (enemies.get(i).getHP() == 0){ // Removes dead enemies, so opposing player can't use them.
+            if (enemies.get(i).getHP() <= 0){ // Removes dead enemies, so opposing player can't use them.
               enemies.remove(i);
             }
           }
@@ -426,7 +426,7 @@ public class Game{
           quit();
         }else{
           for (int i = 0; i < party.size(); i++){
-            if (party.get(i).getHP() == 0){
+            if (party.get(i).getHP() <= 0){
               party.remove(i);  // Removes dead players, so they can't be used.
             }
           }
@@ -438,7 +438,7 @@ public class Game{
           quit();
         }else{
           for (int i = 0; i < enemies.size(); i++){
-            if (enemies.get(i).getHP() == 0){ // Removes dead enemies, so opposing player can't use them.
+            if (enemies.get(i).getHP() <= 0){ // Removes dead enemies, so opposing player can't use them.
               enemies.remove(i);
             }
           }

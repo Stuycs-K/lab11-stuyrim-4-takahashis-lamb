@@ -37,7 +37,11 @@ public class Farmer extends Adventurer{
 
   public String support(){
     setSpecial(getSpecial() + 6);
-    setHP(getHP() + 3);
+    if (getHP() + 3 > getmaxHP()){
+      setHP(getmaxHP());
+    }else{
+      setHP(getHP() + 3);
+    }
     return getSpecialName() + " has grown more berries.";
   }
 
@@ -49,7 +53,11 @@ public class Farmer extends Adventurer{
         return "Berries have been traded.";
       }else{
         setSpecial(getSpecial() - 6);
-        other.setHP(other.getHP() + 18);
+        if (other.getHP() + 18 > other.getmaxHP()){
+          other.setHP(other.getmaxHP());
+        }else{
+          other.setHP(getHP() + 18);
+        }
         return other.getSpecialName() + " was fed and healed.";
       }
     }else{
