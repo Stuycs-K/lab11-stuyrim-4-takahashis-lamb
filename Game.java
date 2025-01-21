@@ -89,28 +89,27 @@ public class Game{
   public static void TextBox(int row, int col, int width, int height, String text){
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
-    int totalChar = width * height;
+    String[] words = text.split(" ");
+
+    for(int i = 0; i < height; i++){
+      for(int j = 0; j < width; j++){
+        drawText(" ", row + i, col + j);
+      }
+    }
+
+    int currentwidth = 0;
+    int currentline = row;
     Text.go(row, col);
-    for (int i = 0; i < totalChar; i++){
-      if (i < text.length()){
-        System.out.print(text.substring(i, i + 1));
-        if (col < col + width){
-          col++;
-          Text.go(row, col);
-        }else{
-          row++;
-          Text.go(row, col);
-        }
+    for (int i = 0; i < words.length; i++){
+      if (words[i].length() + currentwidth + 1 < width){
+        System.out.print(words[i] + " ");
+        currentwidth += words[i].length() + 1;
       }
       else{
-        System.out.print(" ");
-        if (col < col + width){
-          col++;
-          Text.go(row, col);
-        }else{
-          row++;
-          Text.go(row, col);
-        }
+        currentwidth = 0;
+        currentline++;
+        drawText(words[i] + " ", currentline, col);
+        currentwidth += words[i].length() + 1;
       }
     }
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
@@ -282,7 +281,7 @@ public class Game{
   }
 
   public static void drawmove(String move){
-    TextBox(9, 3, 75, 1, move);
+    TextBox(9, 3, 75, 7, move);
   }
 
   public static void run(){
