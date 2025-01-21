@@ -306,8 +306,7 @@ public class Game{
       TextBox(24, 2, 78, 1, preprompt);
       Text.go(24, 3 + preprompt.length());
       input = in.nextLine();
-      int personchoice = in.nextInt();
-      in.nextLine();
+      int personchoice = Integer.parseInt(input.substring(input.length() - 1, input.length())) - 1;
 
       //example debug statment
       //TextBox(24,2,1,78,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
