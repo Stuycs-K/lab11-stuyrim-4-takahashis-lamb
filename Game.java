@@ -368,7 +368,7 @@ public class Game{
         }
 
         if (party.size() == 0){ // entire team is dead
-          String prompt = "Your team has been defeated. You lose! Game over!";
+          String prompt = "Too late! Your team has been defeated. You lose! Game over!";
           TextBox(24, 2, 78, 1, prompt);
           quit();
         }else{
@@ -452,7 +452,7 @@ public class Game{
         }
 
         if (enemies.size() == 0){
-          String prompt = "You defeated the other team. You win! Game over!"
+          String prompt = "The other team has died. You win! Game over!"
           TextBox(24, 2, 78, 1, prompt);
           quit();
         }else{
