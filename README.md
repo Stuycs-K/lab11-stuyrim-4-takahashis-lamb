@@ -19,8 +19,8 @@ Make a clear list of features that work/dont work
 * Can play against chosen number of adventurer opponents(1-3) :white_check_mark:
 * Can use attack/special operations on your opponents :white_check_mark:
 * Can use support operations on your team :white_check_mark:
-* The program ends when the user chose to quit, or all enemies is defeated, or the entire party is defeated :question:
-* Can display the results of the attack/special/support inside your border :question:
+* The program ends when the user chose to quit, or all enemies is defeated, or the entire party is defeated :white_check_mark:
+* Can display the results of the attack/special/support inside your border :white_check_mark:
 * Allow the user to choose names of ally adventurers :ballot_box_with_check:
 
 ## Adventurer Subclasses
@@ -30,7 +30,7 @@ Make a clear list of features that work/dont work
 >* The king holds a trident, and it's special feature is using harvested energy from the sun.
 >
 >* **Attack:** The king stabs the opponent using his sharp trident. This decreases the sun energy by 4 and the opponent's health by 7 HP.
->* **Special Attack:** The king uses his stored sun energy and converts it into electric energy. He initiates a lightning blast, which decreases the sun energy by 20 and the opponent;s health by 15 HP.
+>* **Special Attack:** The king uses his stored sun energy and converts it into electric energy. He initiates a lightning blast, which decreases the sun energy by 20 and the opponent;s health by 20 HP.
 >* **Support:** The king can harvest the sun's energy and heal himself. Increases player's HP by 5, and if used on a king, increases sun energy by 10.
 >* **Max HP:** 50 HP
 
@@ -40,8 +40,7 @@ Make a clear list of features that work/dont work
 >
 >* **Attack:** The farmer can use their berries to poison their opponent. This decreases the berries by 2 and the opponent's health by 4.
 >
->* **Special Attack:** The farmer can convert multiple poison berries into a
-bomb that could potentially kill players. This decreases the farmer's berries by 7 and the opponent's health by 10 HP.
+>* **Special Attack:** The farmer can convert multiple poison berries into a bomb that could potentially kill players. This decreases the farmer's berries by 10 and the opponent's health by 15 HP.
 >
 >* **Support:** The farmer also has berries that can be used to restore health with the seeds growing other berries. This increases the player's hp by 3, and if used on a farmer, increases the berries amount by 6.
 >* **Max HP:** 30 HP
@@ -55,7 +54,7 @@ bomb that could potentially kill players. This decreases the farmer's berries by
 >
 >* **Attack:** Uses God points to suck the life out of opponents. Decreases points by 10 and the opponent's health by 12 HP.
 >
->* **Special Attack:** Trades in God points for the Earth to suffer a devastating natural disaster. Decreases points by 35 and the opponent's health by 25 HP.
+>* **Special Attack:** Trades in God points for the Earth to suffer a devastating natural disaster. Decreases God points by 30 and the opponent's health by 25 HP.
 >
 >* **Support:** Supports itself by increasing amount of God points by 10, health by 10 HP. Uses 4 God points to heal other adventurers by 10.
 >* **Max HP:** 300 HP
