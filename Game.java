@@ -242,7 +242,7 @@ public class Game{
   }
 
   public static void drawmove(String move, Adventurer action, Adventurer recipient){
-    TextBox(9, 3, 76, 2, action.getName() + move + recipient.getName());
+    TextBox(9, 3, 76, 1, action.getName() + move + recipient.getName());
   }
 
   public static void run(){
@@ -319,6 +319,7 @@ public class Game{
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
     boolean partyTurn = true;
+    boolean enterpressed = true;
     int whichPlayer = 0;
     int whichOpponent = 0;
     int turn = 0;
@@ -347,7 +348,8 @@ public class Game{
 
 
       //display event based on last turn's input
-      if(partyTurn && whichPlayer < party.size()){
+      if(partyTurn && whichPlayer < party.size() && enterpressed){
+        enterpressed = false;
         TextBox(24, 3, 76, 1, preprompt);
         //Process user input for the last Adventurer:
         if(input.startsWith("attack") || input.startsWith("a")){
@@ -405,27 +407,25 @@ public class Game{
         //You should decide when you want to re-ask for user input
         //If no errors:
         whichPlayer++;
-        Text.clear();
         drawScreen(party, enemies);
 
         //This is after the player's turn, and allows the user to see the enemy turn
         //Decide where to draw the following prompt:
         String prompt = "press enter to see monster's turn";
-        boolean msgreturn = false;
         TextBox(24, 3, 76, 1, prompt);
         Text.go(24, 37);
         String enter = userInput(in);
         if(enter.equals("\n")){
-          msgreturn = true;
+          enterpressed = true;
         }
 
         partyTurn = false;
         whichOpponent = 0;
         }
         //done with one party member
-      else{
+      else if(enterpressed){
         //not the party turn!
-
+        enterpressed = false;
 
         //enemy attacks a randomly chosen person with a randomly chosen attack.z`
         //Enemy action choices go here!
@@ -484,7 +484,7 @@ public class Game{
         Text.go(24, 4 + prompt.length());
         String enter = userInput(in);
         if(enter.equals("\n")){
-          boolean msgreturn = true;
+          enterpressed = true;
         }
 
         whichOpponent++;
