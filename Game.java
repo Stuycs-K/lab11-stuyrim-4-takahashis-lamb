@@ -201,6 +201,13 @@ public class Game{
   }
 
   public static void checkdeadparty(ArrayList<Adventurer> party){
+    for (int i = 0; i < party.size(); i++){
+      if (party.get(i).getHP() <= 0){
+        TextBox(9, 3, 75, 1, party.get(i).getName() + " is dead");
+        party.remove(i);  // Removes dead players, so they can't be used.
+        i--;
+      }
+    }
     if (party.size() == 0){ // entire team is dead
       TextBox(9, 3, 75, 1, "Your team has been defeated.");
       TextBox(10, 3, 75, 1, Text.colorize("YOU LOSE", Text.BOLD, Text.RED));
@@ -218,18 +225,17 @@ public class Game{
       }
       quit();
       return;
-    }else{
-      for (int i = 0; i < party.size(); i++){
-        if (party.get(i).getHP() <= 0){
-          TextBox(9, 3, 75, 1, party.get(i).getName() + " is dead");
-          party.remove(i);  // Removes dead players, so they can't be used.
-          i--;
-        }
-      }
     }
   }
 
   public static void checkdeadenemy(ArrayList<Adventurer> enemies){
+    for (int i = 0; i < enemies.size(); i++){
+      if (enemies.get(i).getHP() <= 0){ // Removes dead enemies, so opposing player can't use them.
+        TextBox(9, 3, 75, 1, enemies.get(i).getName() + " is dead");
+        enemies.remove(i);
+        i--;
+      }
+    }
     if (enemies.size() == 0){
       TextBox(9, 3, 75, 1, "The other team has died.");
       TextBox(10, 3, 75, 1, Text.colorize("YOU WIN!", Text.BOLD, Text.YELLOW));
@@ -247,14 +253,6 @@ public class Game{
       }
       quit();
       return;
-    }else{
-      for (int i = 0; i < enemies.size(); i++){
-        if (enemies.get(i).getHP() <= 0){ // Removes dead enemies, so opposing player can't use them.
-          TextBox(9, 3, 75, 1, enemies.get(i).getName() + " is dead");
-          enemies.remove(i);
-          i--;
-        }
-      }
     }
   }
 
