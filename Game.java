@@ -82,26 +82,6 @@ public class Game{
         }
       }
     }
-    /*
-    if (text.length() <= width){
-      Text.hideCursor();
-      drawText(text, row, col);
-    }else{
-      Text.hideCursor();
-      Text.go(row, col);
-      for (int i = row; i > row - height; i--){
-        for (int l = col; l < col + width; l++){
-          int pos = ((startH - i) * width) + col - startW;
-          if (pos <= text.length()){
-            drawText(text.substring(pos, pos + 1), row, col);
-          }else{
-            Text.go(row, col);
-            System.out.print(" ");
-          }
-        }
-      }
-      
-    }
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
   }
 
