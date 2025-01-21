@@ -199,6 +199,60 @@ public class Game{
 
   }
 
+  public static void checkdeadparty(ArrayList<Adventurer> party){
+    if (party.size() == 0){ // entire team is dead
+      TextBox(9, 3, 76, 1, "Your team has been defeated.");
+      TextBox(10, 3, 76, 1, Text.colorize("YOU LOSE", Text.BOLD, Text.RED));
+      try{
+        Thread.sleep(2000);
+      } catch(InterruptedException e){
+        e.printStackTrace();
+      }
+      TextBox(9, 3, 76, 1, " ");
+      TextBox(9, 3, 76, 1, Text.colorize("GAME OVER", Text.BOLD));
+      try{
+        Thread.sleep(2000);
+      } catch(InterruptedException e){
+        e.printStackTrace();
+      }
+      quit();
+    }else{
+      for (int i = 0; i < party.size(); i++){
+        if (party.get(i).getHP() <= 0){
+          TextBox(9, 3, 76, 1, party.get(i).getName() + " is dead");
+          party.remove(i);  // Removes dead players, so they can't be used.
+        }
+      }
+    }
+  }
+
+  public static void checkdeadenemy(ArrayList<Adventurer> enemies){
+    if (enemies.size() == 0){
+      TextBox(9, 3, 76, 1, "The other team has died.");
+      TextBox(10, 3, 76, 1, Text.colorize("YOU WIN!", Text.BOLD, Text.YELLOW));
+      try{
+        Thread.sleep(2000);
+      } catch(InterruptedException e){
+        e.printStackTrace();
+      }
+      TextBox(10, 3, 76, 1, " ");
+      TextBox(9, 3, 76, 1, Text.colorize("GAME OVER", Text.BOLD, Text.BLUE));
+      try{
+        Thread.sleep(2000);
+      } catch(InterruptedException e){
+        e.printStackTrace();
+      }
+      quit();
+    }else{
+      for (int i = 0; i < enemies.size(); i++){
+        if (enemies.get(i).getHP() <= 0){ // Removes dead enemies, so opposing player can't use them.
+          TextBox(9, 3, 76, 1, enemies.get(i).getName() + " is dead");
+          enemies.remove(i);
+        }
+      }
+    }
+  }
+
   public static String userInput(Scanner in){
       //Move cursor to prompt location
       Text.go(24, 3);
@@ -217,30 +271,6 @@ public class Game{
     Text.go(32,1);
   }
 
-  public static String dead(ArrayList<Adventurer> party, ArrayList<Adventurer> enemies){
-    int partycounter = 0;
-    for(int i = 0; i < party.size(); i++){
-      if(party.get(i).getHP() <= 0){
-        partycounter++;
-      }
-    }
-    if(partycounter == party.size()){
-      return "party dead";
-    }
-
-    int enemycounter = 0;
-    for(int i = 0; i < enemies.size(); i++){
-      if(enemies.get(i).getHP() <= 0){
-        enemycounter++;
-      }
-    }
-    if(enemycounter == enemies.size()){
-      return "enemies dead";
-    }
-
-    return "none";
-  }
-
   public static void drawmove(String move, Adventurer action, Adventurer recipient){
     TextBox(9, 3, 76, 1, action.getName() + move + recipient.getName());
   }
@@ -255,7 +285,6 @@ public class Game{
 
     TextBox(24, 3, 76, 1, "How many opponents would you like to play against?(1-3)");
     Text.go(24, 59);
-    Text.showCursor();
     int amountenemy = in.nextInt();
 
     //Things to attack:
@@ -333,13 +362,13 @@ public class Game{
     //Main loop
 
     //display this prompt at the start of the game.
-    String preprompt = "Enter command for "+party.get(whichPlayer)+": attack/special/support/quit + desired enemy number";
+    String preprompt = "Command for "+party.get(whichPlayer)+": attack/special/support/quit + enemy number: ";
     
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
       //Read user input
       TextBox(24, 3, 76, 1, preprompt);
-      Text.go(24, 4 + preprompt.length());
+      Text.go(24, 3 + preprompt.length());
       input = in.nextLine();
       int personchoice = Integer.parseInt(input.substring(input.length() - 1, input.length())) - 1;
 
@@ -379,31 +408,9 @@ public class Game{
           TextBox(9, 3, 76, 1, "Failed to input a valid move, you've lost your turn!");
         }
 
-        if (party.size() == 0){ // entire team is dead
-          String prompt = "Too late! Your team has been defeated. You lose! Game over!";
-          TextBox(9, 3, 76, 1, prompt);
-          quit();
-        }else{
-          for (int i = 0; i < party.size(); i++){
-            if (party.get(i).getHP() <= 0){
-              TextBox(9, 3, 76, 1, party.get(i).getName() + " is dead");
-              party.remove(i);  // Removes dead players, so they can't be used.
-            }
-          }
-        }
-
-        if (enemies.size() == 0){
-          String prompt = "You defeated the other team. You win! Game over!";
-          TextBox(9, 3, 76, 1, prompt);
-          quit();
-        }else{
-          for (int i = 0; i < enemies.size(); i++){
-            if (enemies.get(i).getHP() <= 0){ 
-              TextBox(9, 3, 76, 1, enemies.get(i).getName() + " is dead");// Removes dead enemies, so opposing player can't use them.
-              enemies.remove(i);
-            }
-          }
-        }
+        checkdeadparty(party);
+        checkdeadenemy(enemies);
+        
         //You should decide when you want to re-ask for user input
         //If no errors:
         whichPlayer++;
@@ -452,31 +459,9 @@ public class Game{
 
         /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
-      if (party.size() == 0){ // entire team is dead
-          String prompt = "Your team has been defeated. You lose! Game over!";
-          TextBox(9, 3, 76, 1, prompt);
-          quit();
-        }else{
-          for (int i = 0; i < party.size(); i++){
-            if (party.get(i).getHP() <= 0){
-              TextBox(9, 3, 76, 1, party.get(i).getName() + " is dead");
-              party.remove(i);  // Removes dead players, so they can't be used.
-            }
-          }
-        }
+        checkdeadparty(party);
+        checkdeadenemy(enemies);
 
-        if (enemies.size() == 0){
-          String prompt = "The other team has died. You win! Game over!";
-          TextBox(9, 3, 76, 1, prompt);
-          quit();
-        }else{
-          for (int i = 0; i < enemies.size(); i++){
-            if (enemies.get(i).getHP() <= 0){ // Removes dead enemies, so opposing player can't use them.
-              TextBox(9, 3, 76, 1, enemies.get(i).getName() + " is dead");
-              enemies.remove(i);
-            }
-          }
-        }
 
         //Decide where to draw the following prompt:
         String prompt = "press enter to see next turn";
@@ -488,7 +473,6 @@ public class Game{
         }
 
         whichOpponent++;
-        Text.clear();
         drawScreen(party, enemies);
       }//end of one enemy.
 
