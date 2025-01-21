@@ -124,7 +124,7 @@ public class Game{
     public static Adventurer createRandomAdventurer(String name){
       int randomcounter = (int) (Math.random() * 3);
       if(randomcounter == 0){
-        return new CodeWarrior();
+        return new CodeWarrior(name);
       }
       else if(randomcounter == 1){
         return new Farmer(name);
@@ -147,6 +147,7 @@ public class Game{
 
       /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
       //YOUR CODE HERE
+      TextBox(startRow, 3, 75, 4, "");
       int startCol = 3;
       for(int i = 0; i < party.size(); i++){
         drawText(party.get(i).getName(), startRow, startCol);
@@ -201,26 +202,28 @@ public class Game{
 
   public static void checkdeadparty(ArrayList<Adventurer> party){
     if (party.size() == 0){ // entire team is dead
-      TextBox(9, 3, 76, 1, "Your team has been defeated.");
-      TextBox(10, 3, 76, 1, Text.colorize("YOU LOSE", Text.BOLD, Text.RED));
+      TextBox(9, 3, 75, 1, "Your team has been defeated.");
+      TextBox(10, 3, 75, 1, Text.colorize("YOU LOSE", Text.BOLD, Text.RED));
       try{
         Thread.sleep(2000);
       } catch(InterruptedException e){
         e.printStackTrace();
       }
-      TextBox(9, 3, 76, 1, " ");
-      TextBox(9, 3, 76, 1, Text.colorize("GAME OVER", Text.BOLD));
+      TextBox(9, 3, 75, 1, " ");
+      TextBox(9, 3, 75, 1, Text.colorize("GAME OVER", Text.BOLD));
       try{
         Thread.sleep(2000);
       } catch(InterruptedException e){
         e.printStackTrace();
       }
       quit();
+      return;
     }else{
       for (int i = 0; i < party.size(); i++){
         if (party.get(i).getHP() <= 0){
-          TextBox(9, 3, 76, 1, party.get(i).getName() + " is dead");
+          TextBox(9, 3, 75, 1, party.get(i).getName() + " is dead");
           party.remove(i);  // Removes dead players, so they can't be used.
+          i--;
         }
       }
     }
@@ -228,26 +231,28 @@ public class Game{
 
   public static void checkdeadenemy(ArrayList<Adventurer> enemies){
     if (enemies.size() == 0){
-      TextBox(9, 3, 76, 1, "The other team has died.");
-      TextBox(10, 3, 76, 1, Text.colorize("YOU WIN!", Text.BOLD, Text.YELLOW));
+      TextBox(9, 3, 75, 1, "The other team has died.");
+      TextBox(10, 3, 75, 1, Text.colorize("YOU WIN!", Text.BOLD, Text.YELLOW));
       try{
         Thread.sleep(2000);
       } catch(InterruptedException e){
         e.printStackTrace();
       }
-      TextBox(10, 3, 76, 1, " ");
-      TextBox(9, 3, 76, 1, Text.colorize("GAME OVER", Text.BOLD, Text.BLUE));
+      TextBox(10, 3, 75, 1, " ");
+      TextBox(9, 3, 75, 1, Text.colorize("GAME OVER", Text.BOLD, Text.BLUE));
       try{
         Thread.sleep(2000);
       } catch(InterruptedException e){
         e.printStackTrace();
       }
       quit();
+      return;
     }else{
       for (int i = 0; i < enemies.size(); i++){
         if (enemies.get(i).getHP() <= 0){ // Removes dead enemies, so opposing player can't use them.
-          TextBox(9, 3, 76, 1, enemies.get(i).getName() + " is dead");
+          TextBox(9, 3, 75, 1, enemies.get(i).getName() + " is dead");
           enemies.remove(i);
+          i--;
         }
       }
     }
@@ -272,7 +277,7 @@ public class Game{
   }
 
   public static void drawmove(String move, Adventurer action, Adventurer recipient){
-    TextBox(9, 3, 76, 1, action.getName() + move + recipient.getName());
+    TextBox(9, 3, 75, 1, action.getName() + move + recipient.getName());
   }
 
   public static void run(){
@@ -284,7 +289,7 @@ public class Game{
 
     Scanner in = new Scanner(System.in);
 
-    TextBox(24, 3, 76, 1, "How many opponents would you like to play against?(1-3)");
+    TextBox(24, 3, 75, 1, "How many opponents would you like to play against?(1-3)");
     Text.go(24, 59);
     int amountenemy = in.nextInt();
 
@@ -317,12 +322,12 @@ public class Game{
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
 
-    TextBox(24, 3, 76, 1, "How many allies would you like to play with?(1-3)");
+    TextBox(24, 3, 75, 1, "How many allies would you like to play with?(1-3)");
     Text.go(24, 53);
     int amountparty = in.nextInt();
     in.nextLine();
 
-    TextBox(24, 3, 76, 1, "What do you want their names to be?(in name, name2 format)");
+    TextBox(24, 3, 75, 1, "What do you want their names to be?(in name, name2 format)");
     Text.go(24, 62);
     String partynames = in.nextLine();
 
@@ -362,10 +367,12 @@ public class Game{
     //Main loop
 
     //display this prompt at the start of the game.
-    String preprompt = "Command for "+party.get(whichPlayer)+": attack/special/support/quit + enemy number: ";
+    
     
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
+
+      String preprompt = "Command for "+party.get(whichPlayer)+": attack/special/support/quit + enemy number: ";
 
       if (!partyTurn && whichOpponent >= enemies.size()) {
         whichOpponent = 0;
@@ -376,25 +383,25 @@ public class Game{
 
 
       //example debug statment
-      //TextBox(24,3,76,1,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
+      //TextBox(24,3,75,1,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
 
 
       //display event based on last turn's input
       if(partyTurn && whichPlayer < party.size()){
         //Read user input
-        TextBox(24, 3, 76, 1, preprompt);
+        TextBox(24, 3, 75, 1, preprompt);
         Text.go(24, 3 + preprompt.length());
         int personchoice = 0;
         input = in.nextLine();
         if(input.equals("q") || input.equals("quit")){
-          TextBox(9, 3, 76, 1, "Game aborted.");
+          TextBox(9, 3, 75, 1, "Game aborted.");
           quit();
           return;
         }
         try{
           personchoice = Integer.parseInt(input.substring(input.length() - 1, input.length())) - 1;  
         } catch(NumberFormatException e){
-          TextBox(9, 3, 76, 1, "Invalid input.");
+          TextBox(9, 3, 75, 1, "Invalid input.");
           Text.showCursor();
           Text.go(1, 1);
         }
@@ -424,7 +431,9 @@ public class Game{
         }
 
         checkdeadparty(party);
+        drawScreen(party, enemies);
         checkdeadenemy(enemies);
+        drawScreen(party, enemies);
 
         //You should decide when you want to re-ask for user input
         //If no errors:
@@ -471,12 +480,14 @@ public class Game{
         /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
         checkdeadparty(party);
+        drawScreen(party, enemies);
         checkdeadenemy(enemies);
+        drawScreen(party, enemies);
 
 
         //Decide where to draw the following prompt:
         String prompt = "press enter to see next turn";
-        TextBox(24, 3, 76, 1, prompt);
+        TextBox(24, 3, 75, 1, prompt);
         Text.go(24, 4 + prompt.length());
         input = userInput(in);
 
