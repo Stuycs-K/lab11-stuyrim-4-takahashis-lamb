@@ -16,11 +16,12 @@ Make a clear list of features that work/dont work
 :beetle: This is a bug that affects the game.
 
 * Can play with a group of 3 different types of adventurers :white_check_mark:
-* Can play against 1-3 randomly chosen adventurer opponents :white_check_mark:
+* Can play against chosen number of adventurer opponents(1-3) :white_check_mark:
 * Can use attack/special operations on your opponents :white_check_mark:
 * Can use support operations on your team :white_check_mark:
 * The program ends when the user chose to quit, or all enemies is defeated, or the entire party is defeated :question:
 * Can display the results of the attack/special/support inside your border :question:
+* Allow the user to choose names of ally adventurers :ballot_box_with_check:
 
 ## Adventurer Subclasses
 
