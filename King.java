@@ -66,9 +66,9 @@ public class King extends Adventurer{
     }
   
     public String specialAttack(Adventurer other){
-      if (getSpecial() >= 10){ 
-        other.applyDamage(15); 
-        setSpecial(getSpecial() - 10);
+      if (getSpecial() >= 20){ 
+        other.applyDamage(20); 
+        setSpecial(getSpecial() - 20);
         return other.getName() + " is shot down by lightning.";
       }else{
         return "More energy from the sun is needed to convert to create a lightning strike.";

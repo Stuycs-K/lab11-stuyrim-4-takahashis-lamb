@@ -66,9 +66,9 @@ public class Farmer extends Adventurer{
   }
 
   public String specialAttack(Adventurer other){
-    if (getSpecial() >= 7){
-      other.applyDamage(10);
-      setSpecial(getSpecial() - 7);
+    if (getSpecial() >= 10){
+      other.applyDamage(15);
+      setSpecial(getSpecial() - 10);
       return other.getName() + " is covered in poison.";
     }else{
       return "More berries are needed for a bomb.";

@@ -3,7 +3,7 @@ public class Boss extends Adventurer{
 
     public Boss(String name, int hp){
         super(name, hp);
-        godptsMax = 300;
+        godptsMax = 200;
         this.godpts = godptsMax / 2;
       }
 
@@ -62,9 +62,9 @@ public class Boss extends Adventurer{
 
 
       public String specialAttack(Adventurer other){
-        if (getSpecial() >= 35){
+        if (getSpecial() >= 30){
           other.applyDamage(25);
-          setSpecial(getSpecial() - 35);
+          setSpecial(getSpecial() - 30);
           return other.getName() + " was smited.";
         }else{
           return getName() + "is not powerful enough for this attack.";
