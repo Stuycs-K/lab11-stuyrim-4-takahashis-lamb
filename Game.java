@@ -431,7 +431,7 @@ public class Game{
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
           if(whichPlayer == personchoice){
-            move = enemies.get(whichPlayer).support();
+            move = party.get(whichPlayer).support();
           }
           else{
             move = party.get(whichPlayer).support(party.get(personchoice));
