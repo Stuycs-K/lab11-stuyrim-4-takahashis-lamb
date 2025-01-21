@@ -148,6 +148,7 @@ public class Game{
       /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
       //YOUR CODE HERE
       TextBox(startRow, 3, 75, 4, "");
+      
       int startCol = 3;
       for(int i = 0; i < party.size(); i++){
         drawText(party.get(i).getName(), startRow, startCol);
@@ -200,7 +201,7 @@ public class Game{
 
   }
 
-  public static void checkdeadparty(ArrayList<Adventurer> party){
+  public static boolean checkdeadparty(ArrayList<Adventurer> party){
     for (int i = 0; i < party.size(); i++){
       if (party.get(i).getHP() <= 0){
         TextBox(9, 3, 75, 1, party.get(i).getName() + " is dead");
@@ -210,25 +211,28 @@ public class Game{
     }
     if (party.size() == 0){ // entire team is dead
       TextBox(9, 3, 75, 1, "Your team has been defeated.");
-      TextBox(10, 3, 75, 1, Text.colorize("YOU LOSE", Text.BOLD, Text.RED));
+      TextBox(10, 3, 75, 1, Text.colorize("YOU LOSE", Text.RED));
       try{
         Thread.sleep(2000);
       } catch(InterruptedException e){
         e.printStackTrace();
       }
       TextBox(9, 3, 75, 1, " ");
-      TextBox(9, 3, 75, 1, Text.colorize("GAME OVER", Text.BOLD));
+      TextBox(9, 3, 75, 1, Text.colorize("GAME OVER", Text.BLUE));
       try{
         Thread.sleep(2000);
       } catch(InterruptedException e){
         e.printStackTrace();
       }
       quit();
-      return;
+      return true;
+    }
+    else{
+      return false;
     }
   }
 
-  public static void checkdeadenemy(ArrayList<Adventurer> enemies){
+  public static boolean checkdeadenemy(ArrayList<Adventurer> enemies){
     for (int i = 0; i < enemies.size(); i++){
       if (enemies.get(i).getHP() <= 0){ // Removes dead enemies, so opposing player can't use them.
         TextBox(9, 3, 75, 1, enemies.get(i).getName() + " is dead");
@@ -238,21 +242,24 @@ public class Game{
     }
     if (enemies.size() == 0){
       TextBox(9, 3, 75, 1, "The other team has died.");
-      TextBox(10, 3, 75, 1, Text.colorize("YOU WIN!", Text.BOLD, Text.YELLOW));
+      TextBox(10, 3, 75, 1, Text.colorize("YOU WIN!", Text.YELLOW));
       try{
         Thread.sleep(2000);
       } catch(InterruptedException e){
         e.printStackTrace();
       }
-      TextBox(10, 3, 75, 1, " ");
-      TextBox(9, 3, 75, 1, Text.colorize("GAME OVER", Text.BOLD, Text.BLUE));
+      TextBox(10, 3, 75, 1, "");
+      TextBox(9, 3, 75, 1, Text.colorize("GAME OVER", Text.BLUE));
       try{
         Thread.sleep(2000);
       } catch(InterruptedException e){
         e.printStackTrace();
       }
       quit();
-      return;
+      return true;
+    }
+    else{
+      return false;
     }
   }
 
@@ -428,10 +435,16 @@ public class Game{
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
 
-        checkdeadparty(party);
-        drawScreen(party, enemies);
-        checkdeadenemy(enemies);
-        drawScreen(party, enemies);
+        if(checkdeadparty(party)){
+          drawScreen(party, enemies);
+          quit();
+          return;
+        }
+        if(checkdeadenemy(enemies)){
+          drawScreen(party, enemies);
+          quit();
+          return;
+        }
 
         //You should decide when you want to re-ask for user input
         //If no errors:
@@ -477,10 +490,16 @@ public class Game{
 
         /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
-        checkdeadparty(party);
-        drawScreen(party, enemies);
-        checkdeadenemy(enemies);
-        drawScreen(party, enemies);
+        if(checkdeadparty(party)){
+          drawScreen(party, enemies);
+          quit();
+          return;
+        }
+        if(checkdeadenemy(enemies)){
+          drawScreen(party, enemies);
+          quit();
+          return;
+        }
 
 
         //Decide where to draw the following prompt:
