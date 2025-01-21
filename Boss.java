@@ -8,7 +8,7 @@ public class Boss extends Adventurer{
       }
 
       public String getSpecialName(){
-        return "Boss " + getName().substring(0, 2);
+        return "god points";
       }
 
       public int getSpecial(){
