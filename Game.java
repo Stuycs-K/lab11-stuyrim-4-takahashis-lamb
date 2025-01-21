@@ -343,6 +343,29 @@ public class Game{
           TextBox(20, 2, 78, 1, "Failed to input a valid move, you've lost your turn!");
         }
 
+        if (party.size() == 0){ // entire team is dead
+          String prompt = "Your team has been defeated. You lose! Game over!";
+          TextBox(24, 2, 78, 1, prompt);
+          quit();
+        }else{
+          for (int i = 0; i < party.size(); i++){
+            if (party.get(i).getHP() == 0){
+              party.remove(i);  // Removes dead players, so they can't be used.
+            }
+          }
+        }
+
+        if (enemies.size() == 0){
+          String prompt = "You defeated the other team. You win! Game over!"
+          TextBox(24, 2, 78, 1, prompt);
+          quit();
+        }else{
+          for (int i = 0; i < enemies.size(); i++){
+            if (enemies.get(i).getHP() == 0){ // Removes dead enemies, so opposing player can't use them.
+              enemies.remove(i);
+            }
+          }
+        }
         //You should decide when you want to re-ask for user input
         //If no errors:
         whichPlayer++;
@@ -392,6 +415,29 @@ public class Game{
 
         /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
+      if (party.size() == 0){ // entire team is dead
+          String prompt = "Your team has been defeated. You lose! Game over!";
+          TextBox(24, 2, 78, 1, prompt);
+          quit();
+        }else{
+          for (int i = 0; i < party.size(); i++){
+            if (party.get(i).getHP() == 0){
+              party.remove(i);  // Removes dead players, so they can't be used.
+            }
+          }
+        }
+
+        if (enemies.size() == 0){
+          String prompt = "You defeated the other team. You win! Game over!"
+          TextBox(24, 2, 78, 1, prompt);
+          quit();
+        }else{
+          for (int i = 0; i < enemies.size(); i++){
+            if (enemies.get(i).getHP() == 0){ // Removes dead enemies, so opposing player can't use them.
+              enemies.remove(i);
+            }
+          }
+        }
 
         //Decide where to draw the following prompt:
         String prompt = "press enter to see next turn";
