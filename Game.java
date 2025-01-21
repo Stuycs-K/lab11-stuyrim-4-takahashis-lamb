@@ -136,7 +136,7 @@ public class Game{
 
       /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
       //YOUR CODE HERE
-      int startCol = 2;
+      int startCol = 3;
       for(int i = 0; i < party.size(); i++){
         drawText(party.get(i).getName(), startRow, startCol);
         drawText("HP: " + colorByPercent(party.get(i).getHP(), party.get(i).getmaxHP()), startRow + 1, startCol);
@@ -207,8 +207,32 @@ public class Game{
     Text.go(32,1);
   }
 
+  public static String dead(ArrayList<Adventurer> party, ArrayList<Adventurer> enemies){
+    int partycounter = 0;
+    for(int i = 0; i < party.size(); i++){
+      if(party.get(i).getHP() <= 0){
+        partycounter++;
+      }
+    }
+    if(partycounter == party.size()){
+      return "party dead";
+    }
+
+    int enemycounter = 0;
+    for(int i = 0; i < enemies.size(); i++){
+      if(enemies.get(i).getHP() <= 0){
+        enemycounter++;
+      }
+    }
+    if(enemycounter == enemies.size()){
+      return "enemies dead";
+    }
+
+    return "none";
+  }
+
   public static void drawmove(String move, Adventurer action, Adventurer recipient){
-    TextBox(8, 3, 76, 10, action.getName() + move + recipient.getName());
+    TextBox(8, 3, 76, 2, action.getName() + move + recipient.getName());
   }
 
   public static void run(){
@@ -253,13 +277,13 @@ public class Game{
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
 
-    TextBox(24, 2, 78, 1, "How many allies would you like to play with?(1-3)");
-    Text.go(24, 52);
+    TextBox(24, 3, 78, 1, "How many allies would you like to play with?(1-3)");
+    Text.go(24, 53);
     int amountparty = in.nextInt();
     in.nextLine();
 
-    TextBox(24, 2, 78, 1, "What do you want their names to be?(in name, name2 format)");
-    Text.go(24, 61);
+    TextBox(24, 3, 78, 1, "What do you want their names to be?(in name, name2 format)");
+    Text.go(24, 62);
     String partynames = in.nextLine();
 
     String[] partyname = partynames.split(", ");
@@ -303,8 +327,8 @@ public class Game{
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
       //Read user input
-      TextBox(24, 2, 78, 1, preprompt);
-      Text.go(24, 3 + preprompt.length());
+      TextBox(24, 3, 78, 1, preprompt);
+      Text.go(24, 4 + preprompt.length());
       input = in.nextLine();
       int personchoice = Integer.parseInt(input.substring(input.length() - 1, input.length())) - 1;
 
@@ -314,7 +338,7 @@ public class Game{
 
       //display event based on last turn's input
       if(partyTurn && whichPlayer < party.size()){
-        TextBox(24, 2, 1, 78, preprompt);
+        TextBox(24, 3, 1, 78, preprompt);
         //Process user input for the last Adventurer:
         if(input.startsWith("attack") || input.startsWith("a")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
@@ -340,7 +364,7 @@ public class Game{
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
         else{
-          TextBox(20, 2, 78, 1, "Failed to input a valid move, you've lost your turn!");
+          TextBox(20, 3, 78, 1, "Failed to input a valid move, you've lost your turn!");
         }
 
         if (party.size() == 0){ // entire team is dead
@@ -375,8 +399,8 @@ public class Game{
         //Decide where to draw the following prompt:
         String prompt = "press enter to see monster's turn";
         boolean msgreturn = false;
-        TextBox(24, 2, 78, 1, prompt);
-        Text.go(24, 36);
+        TextBox(24, 3, 78, 1, prompt);
+        Text.go(24, 37);
         String enter = userInput(in);
         if(enter.equals("\n")){
           msgreturn = true;
@@ -441,8 +465,8 @@ public class Game{
 
         //Decide where to draw the following prompt:
         String prompt = "press enter to see next turn";
-        TextBox(24, 2, 78, 1, prompt);
-        Text.go(24, 3 + prompt.length());
+        TextBox(24, 3, 78, 1, prompt);
+        Text.go(24, 4 + prompt.length());
         String enter = userInput(in);
         if(enter.equals("\n")){
           boolean msgreturn = true;
