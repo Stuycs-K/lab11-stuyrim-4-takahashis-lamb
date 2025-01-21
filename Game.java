@@ -180,7 +180,7 @@ public class Game{
     drawBackground();
 
     //draw player party
-    drawParty(party, 20);
+    drawParty(party, 16);
 
     //draw enemy party
     drawParty(enemies, 3);
@@ -380,7 +380,7 @@ public class Game{
         }
 
         if (enemies.size() == 0){
-          String prompt = "You defeated the other team. You win! Game over!"
+          String prompt = "You defeated the other team. You win! Game over!";
           TextBox(24, 2, 78, 1, prompt);
           quit();
         }else{
@@ -452,7 +452,7 @@ public class Game{
         }
 
         if (enemies.size() == 0){
-          String prompt = "The other team has died. You win! Game over!"
+          String prompt = "The other team has died. You win! Game over!";
           TextBox(24, 2, 78, 1, prompt);
           quit();
         }else{
