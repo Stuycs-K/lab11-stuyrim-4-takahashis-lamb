@@ -15,22 +15,63 @@ public class Game{
   public static void drawBackground(){
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
-    Text.go(1, 1);
-    for(int i = 1; i <= 80; i++){
-      System.out.print("━");
+    for(int i = 2; i <= 79; i++){
+      drawText(Text.colorize("━", Text.BOLD), 1, i);
+      drawText(Text.colorize("━", Text.BOLD), 2, i);
+
+      drawText(Text.colorize("━", Text.BOLD), 7, i);
+      drawText(Text.colorize("━", Text.BOLD), 8, i);
+
+      drawText(Text.colorize("━", Text.BOLD), 16, i);
+      drawText(Text.colorize("━", Text.BOLD), 17, i);
+
+      drawText(Text.colorize("━", Text.BOLD), 22, i);
+      drawText(Text.colorize("━", Text.BOLD), 23, i);
+
+      drawText(Text.colorize("━", Text.BOLD), HEIGHT, i);
+      drawText(Text.colorize("━", Text.BOLD), HEIGHT - 1, i);
     }
-    for(int i = 1; i <= 30; i++){
-      Text.go(i, 1);
-      System.out.print("┃");
+    for(int i = 2; i <= 29; i++){
+      drawText(Text.colorize("┃", Text.BOLD), i, 1);
+      drawText(Text.colorize("┃", Text.BOLD), i, 2);
+      drawText(Text.colorize("┃", Text.BOLD), i, WIDTH);
+      drawText(Text.colorize("┃", Text.BOLD), i, WIDTH - 1);
     }
-    for(int i = 1; i <= 30; i++){
-      Text.go(i, 80);
-      System.out.print("┃");
-    }
-    for(int i = 1; i <= 80; i++){
-      Text.go(30, i);
-      System.out.print("━");
-    }
+
+    drawText(Text.colorize("┏", Text.BOLD), 1, 1);
+    drawText(Text.colorize("┓", Text.BOLD), 1, WIDTH);
+    drawText(Text.colorize("┗", Text.BOLD), HEIGHT, 1);
+    drawText(Text.colorize("┛", Text.BOLD), HEIGHT, WIDTH);
+
+    drawText(Text.colorize("┏", Text.BOLD), 2, 2);
+    drawText(Text.colorize("┓", Text.BOLD), 2, WIDTH - 1);
+    drawText(Text.colorize("┗", Text.BOLD), HEIGHT - 1, 2);
+    drawText(Text.colorize("┛", Text.BOLD), HEIGHT - 1, WIDTH - 1);
+
+    drawText(Text.colorize("┗", Text.BOLD), 4, 2);
+    drawText(Text.colorize("┏", Text.BOLD), 5, 2);
+    drawText(Text.colorize("┛", Text.BOLD), 4, WIDTH - 1);
+    drawText(Text.colorize("┓", Text.BOLD), 5, WIDTH - 1);
+
+    drawText(Text.colorize("┗", Text.BOLD), 10, 2);
+    drawText(Text.colorize("┏", Text.BOLD), 11, 2);
+    drawText(Text.colorize("┛", Text.BOLD), 10, WIDTH - 1);
+    drawText(Text.colorize("┓", Text.BOLD), 11, WIDTH - 1);
+
+    drawText(Text.colorize("┗", Text.BOLD), 16, 2);
+    drawText(Text.colorize("┏", Text.BOLD), 17, 2);
+    drawText(Text.colorize("┛", Text.BOLD), 16, WIDTH - 1);
+    drawText(Text.colorize("┓", Text.BOLD), 17, WIDTH - 1);
+
+    drawText(Text.colorize("┗", Text.BOLD), 19, 2);
+    drawText(Text.colorize("┏", Text.BOLD), 20, 2);
+    drawText(Text.colorize("┛", Text.BOLD), 19, WIDTH - 1);
+    drawText(Text.colorize("┓", Text.BOLD), 20, WIDTH - 1);
+
+    drawText(Text.colorize("┗", Text.BOLD), 22, 2);
+    drawText(Text.colorize("┏", Text.BOLD), 23, 2);
+    drawText(Text.colorize("┛", Text.BOLD), 22, WIDTH - 1);
+    drawText(Text.colorize("┓", Text.BOLD), 23, WIDTH - 1);
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
   }
 
@@ -160,18 +201,18 @@ public class Game{
     drawBackground();
 
     //draw player party
-    drawParty(party, 16);
+    drawParty(party, 18);
 
     //draw enemy party
     drawParty(enemies, 3);
 
-    Text.go(24, 2);
+    Text.go(24, 3);
 
   }
 
   public static String userInput(Scanner in){
       //Move cursor to prompt location
-      Text.go(24, 2);
+      Text.go(24, 3);
 
       //show cursor
       Text.showCursor();
@@ -212,7 +253,7 @@ public class Game{
   }
 
   public static void drawmove(String move, Adventurer action, Adventurer recipient){
-    TextBox(8, 3, 76, 2, action.getName() + move + recipient.getName());
+    TextBox(9, 3, 76, 2, action.getName() + move + recipient.getName());
   }
 
   public static void run(){
@@ -223,8 +264,8 @@ public class Game{
 
     Scanner in = new Scanner(System.in);
 
-    TextBox(24, 2, 78, 1, "How many opponents would you like to play against?(1-3)");
-    Text.go(24, 58);
+    TextBox(24, 3, 76, 1, "How many opponents would you like to play against?(1-3)");
+    Text.go(24, 59);
     Text.showCursor();
     int amountenemy = in.nextInt();
 
@@ -257,12 +298,12 @@ public class Game{
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //YOUR CODE HERE
 
-    TextBox(24, 3, 78, 1, "How many allies would you like to play with?(1-3)");
+    TextBox(24, 3, 76, 1, "How many allies would you like to play with?(1-3)");
     Text.go(24, 53);
     int amountparty = in.nextInt();
     in.nextLine();
 
-    TextBox(24, 3, 78, 1, "What do you want their names to be?(in name, name2 format)");
+    TextBox(24, 3, 76, 1, "What do you want their names to be?(in name, name2 format)");
     Text.go(24, 62);
     String partynames = in.nextLine();
 
@@ -307,18 +348,18 @@ public class Game{
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
       //Read user input
-      TextBox(24, 3, 78, 1, preprompt);
+      TextBox(24, 3, 76, 1, preprompt);
       Text.go(24, 4 + preprompt.length());
       input = in.nextLine();
       int personchoice = Integer.parseInt(input.substring(input.length() - 1, input.length())) - 1;
 
       //example debug statment
-      //TextBox(24,2,1,78,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
+      //TextBox(24,3,76,1,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
 
 
       //display event based on last turn's input
       if(partyTurn && whichPlayer < party.size()){
-        TextBox(24, 3, 1, 78, preprompt);
+        TextBox(24, 3, 76, 1, preprompt);
         //Process user input for the last Adventurer:
         if(input.startsWith("attack") || input.startsWith("a")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
@@ -344,17 +385,17 @@ public class Game{
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
         else{
-          TextBox(20, 3, 78, 1, "Failed to input a valid move, you've lost your turn!");
+          TextBox(9, 3, 76, 1, "Failed to input a valid move, you've lost your turn!");
         }
 
         if (party.size() == 0){ // entire team is dead
           String prompt = "Too late! Your team has been defeated. You lose! Game over!";
-          TextBox(24, 2, 78, 1, prompt);
+          TextBox(9, 3, 76, 1, prompt);
           quit();
         }else{
           for (int i = 0; i < party.size(); i++){
             if (party.get(i).getHP() <= 0){
-              TextBox(24, 2, 78, 1, party.get(i).getName() + " is dead");
+              TextBox(9, 3, 76, 1, party.get(i).getName() + " is dead");
               party.remove(i);  // Removes dead players, so they can't be used.
             }
           }
@@ -362,12 +403,12 @@ public class Game{
 
         if (enemies.size() == 0){
           String prompt = "You defeated the other team. You win! Game over!";
-          TextBox(24, 2, 78, 1, prompt);
+          TextBox(9, 3, 76, 1, prompt);
           quit();
         }else{
           for (int i = 0; i < enemies.size(); i++){
             if (enemies.get(i).getHP() <= 0){ 
-              TextBox(25, 2, 78, 1, enemies.get(i).getName() + " is dead");// Removes dead enemies, so opposing player can't use them.
+              TextBox(9, 3, 76, 1, enemies.get(i).getName() + " is dead");// Removes dead enemies, so opposing player can't use them.
               enemies.remove(i);
             }
           }
@@ -382,7 +423,7 @@ public class Game{
         //Decide where to draw the following prompt:
         String prompt = "press enter to see monster's turn";
         boolean msgreturn = false;
-        TextBox(24, 3, 78, 1, prompt);
+        TextBox(24, 3, 76, 1, prompt);
         Text.go(24, 37);
         String enter = userInput(in);
         if(enter.equals("\n")){
@@ -424,12 +465,12 @@ public class Game{
 
       if (party.size() == 0){ // entire team is dead
           String prompt = "Your team has been defeated. You lose! Game over!";
-          TextBox(24, 2, 78, 1, prompt);
+          TextBox(9, 3, 76, 1, prompt);
           quit();
         }else{
           for (int i = 0; i < party.size(); i++){
             if (party.get(i).getHP() <= 0){
-              TextBox(24, 2, 78, 1, party.get(i).getName() + " is dead");
+              TextBox(9, 3, 76, 1, party.get(i).getName() + " is dead");
               party.remove(i);  // Removes dead players, so they can't be used.
             }
           }
@@ -437,12 +478,12 @@ public class Game{
 
         if (enemies.size() == 0){
           String prompt = "The other team has died. You win! Game over!";
-          TextBox(24, 2, 78, 1, prompt);
+          TextBox(9, 3, 76, 1, prompt);
           quit();
         }else{
           for (int i = 0; i < enemies.size(); i++){
             if (enemies.get(i).getHP() <= 0){ // Removes dead enemies, so opposing player can't use them.
-              TextBox(25, 2, 78, 1, enemies.get(i).getName() + " is dead");
+              TextBox(9, 3, 76, 1, enemies.get(i).getName() + " is dead");
               enemies.remove(i);
             }
           }
@@ -450,7 +491,7 @@ public class Game{
 
         //Decide where to draw the following prompt:
         String prompt = "press enter to see next turn";
-        TextBox(24, 3, 78, 1, prompt);
+        TextBox(24, 3, 76, 1, prompt);
         Text.go(24, 4 + prompt.length());
         String enter = userInput(in);
         if(enter.equals("\n")){
