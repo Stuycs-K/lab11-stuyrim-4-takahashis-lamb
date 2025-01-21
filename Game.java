@@ -393,6 +393,7 @@ public class Game{
         //You should decide when you want to re-ask for user input
         //If no errors:
         whichPlayer++;
+        Text.clear();
         drawScreen(party, enemies);
 
         //This is after the player's turn, and allows the user to see the enemy turn
@@ -473,6 +474,7 @@ public class Game{
         }
 
         whichOpponent++;
+        Text.clear();
         drawScreen(party, enemies);
       }//end of one enemy.
 
@@ -487,6 +489,7 @@ public class Game{
         String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
       }
       //display the updated screen after input has been processed.
+      Text.clear();
       drawScreen(party, enemies);
 
 
